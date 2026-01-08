@@ -592,14 +592,24 @@
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
         menu.classList.toggle('hidden');
     }
 
     function scrollToWaitlist() {
-        document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+        const waitlistSection = document.getElementById('waitlist');
+        if (waitlistSection) {
+            waitlistSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Focus on email input after scrolling
+            setTimeout(function() {
+                const emailInput = document.getElementById('mce-EMAIL');
+                if (emailInput) {
+                    emailInput.focus();
+                }
+            }, 800);
+        }
     }
 
     // Close mobile menu when clicking a link
