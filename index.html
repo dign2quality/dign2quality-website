@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Built to Last: Quality as Strategy in Manufacturing | Dign2Quality</title>
-    <meta name="description" content="A pragmatic blueprint for moving quality from the margins to strategy. Complete with universal tools, templates, and real-world playbooks applicable across all manufacturing industries.">
+    <meta name="description" content="A pragmatic blueprint for moving quality from the margins to strategy. Complete with tools, templates, and real-world playbooks from aerospace and defense.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQH11J6K3F"></script>
 <script>
@@ -482,15 +483,81 @@
                 </div>
             </div>
 
-            <!-- Waitlist Form -->
-            <form class="space-y-4">
-                <input type="email" placeholder="Enter your email" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:outline-none">
-                <input type="text" placeholder="Your name" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:outline-none">
-                <input type="text" placeholder="Company (optional)" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:outline-none">
-                <button type="submit" class="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition">
-                    Join Waitlist - Reserve Your Copy
-                </button>
-            </form>
+            <!-- Mailchimp Waitlist Form -->
+            <style>
+                #mc_embed_signup { background: transparent !important; clear: left; font: inherit !important; width: 100% !important; }
+                #mc_embed_signup form { padding: 0 !important; }
+                #mc_embed_signup h2 { display: none !important; }
+                #mc_embed_signup .indicates-required { display: none !important; }
+                #mc_embed_signup .mc-field-group { margin-bottom: 1rem !important; }
+                #mc_embed_signup .mc-field-group label { display: none !important; }
+                #mc_embed_signup input[type="email"] {
+                    width: 100% !important;
+                    padding: 0.75rem 1rem !important;
+                    border: 2px solid #d1d5db !important;
+                    border-radius: 0.5rem !important;
+                    font-size: 1rem !important;
+                    transition: border-color 0.2s !important;
+                }
+                #mc_embed_signup input[type="email"]:focus {
+                    outline: none !important;
+                    border-color: #3b82f6 !important;
+                }
+                #mc_embed_signup .button {
+                    width: 100% !important;
+                    padding: 1rem 2rem !important;
+                    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+                    color: white !important;
+                    border: none !important;
+                    border-radius: 0.5rem !important;
+                    font-size: 1.125rem !important;
+                    font-weight: bold !important;
+                    cursor: pointer !important;
+                    transition: all 0.2s !important;
+                    margin: 0 !important;
+                }
+                #mc_embed_signup .button:hover {
+                    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+                    transform: translateY(-2px) !important;
+                }
+                #mc_embed_signup .optionalParent { margin-top: 0 !important; }
+                #mc_embed_signup .foot { margin-top: 0 !important; padding: 0 !important; }
+                #mc_embed_signup .refferal_badge { display: none !important; }
+                #mc_embed_signup .response { margin: 1rem 0 !important; padding: 0.75rem !important; border-radius: 0.5rem !important; text-align: center !important; font-weight: 600 !important; }
+                #mce-success-response { background: #d4edda !important; color: #155724 !important; }
+                #mce-error-response { background: #f8d7da !important; color: #721c24 !important; }
+            </style>
+            <div id="mc_embed_signup">
+                <form action="https://dign2quality.us9.list-manage.com/subscribe/post?u=7a8d961896cdc4aaea59af62d&amp;id=8922a24c1c&amp;f_id=000ed5e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+                    <div id="mc_embed_signup_scroll">
+                        <div class="mc-field-group">
+                            <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Enter your email address" value="">
+                        </div>
+                        <div id="mce-responses" class="clear foot">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                        </div>
+                        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                            <input type="text" name="b_7a8d961896cdc4aaea59af62d_8922a24c1c" tabindex="-1" value="">
+                        </div>
+                        <div class="optionalParent">
+                            <div class="clear foot">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join Waitlist - Reserve Your Copy">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+            <script type="text/javascript">
+                (function($) {
+                    window.fnames = new Array(); 
+                    window.ftypes = new Array();
+                    fnames[0]='EMAIL';
+                    ftypes[0]='email';
+                }(jQuery));
+                var $mcj = jQuery.noConflict(true);
+            </script>
             
             <p class="text-sm text-gray-500 mt-4">🔒 We respect your privacy. Unsubscribe anytime.</p>
         </div>
@@ -516,7 +583,7 @@
             </div>
             <div>
                 <h3 class="font-bold text-white text-lg mb-4">Contact</h3>
-                <p class="text-sm">Questions about the book?<br/>Email: info@dign2quality.com</p>
+                <p class="text-sm">Questions about the book?<br/>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9d0d7dfd6f9ddd0ded78bc8ccd8d5d0cdc097dad6d4">[email&#160;protected]</a></p>
             </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
@@ -525,7 +592,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
         menu.classList.toggle('hidden');
@@ -536,12 +603,4 @@
     }
 
     // Close mobile menu when clicking a link
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.add('hidden');
-        });
-    });
-</script>
-
-</body>
-</html>
+ 
