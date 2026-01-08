@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPAP Package Generator | Dign2Quality</title>
+    <meta name="description" content="Production Part Approval Process Package Generator - Free automotive quality tool">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .form-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .checklist {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .checklist h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .checkbox-item:hover {
+            background: #e9ecef;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .checkbox-item label {
+            flex: 1;
+            cursor: pointer;
+            font-weight: 500;
+            color: #333;
+        }
+        .checkbox-item.checked {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        .level-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .level-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        .level-btn:hover {
+            border-color: #667eea;
+        }
+        .level-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 1.2em;
+        }
+        .progress {
+            background: #e9ecef;
+            border-radius: 8px;
+            height: 30px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>🚗 PPAP Package Generator</h1>
+            <p>Production Part Approval Process Documentation</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Part Information</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Part Number</label>
+                    <input type="text" id="partNumber" placeholder="Enter part number">
+                </div>
+                <div class="input-group">
+                    <label>Part Name</label>
+                    <input type="text" id="partName" placeholder="Enter part name">
+                </div>
+                <div class="input-group">
+                    <label>Supplier Name</label>
+                    <input type="text" id="supplierName" placeholder="Enter supplier name">
+                </div>
+                <div class="input-group">
+                    <label>Customer</label>
+                    <input type="text" id="customer" placeholder="Enter customer name">
+                </div>
+                <div class="input-group">
+                    <label>Submission Date</label>
+                    <input type="date" id="submissionDate">
+                </div>
+                <div class="input-group">
+                    <label>Submitter Name</label>
+                    <input type="text" id="submitterName" placeholder="Enter submitter name">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>PPAP Submission Level</h2>
+            <p style="color:#666; margin-bottom:15px;">Select the required submission level:</p>
+            <div class="level-selector">
+                <button class="level-btn" onclick="selectLevel(1)">Level 1<br><small>PSW Only</small></button>
+                <button class="level-btn" onclick="selectLevel(2)">Level 2<br><small>PSW + Samples</small></button>
+                <button class="level-btn active" onclick="selectLevel(3)">Level 3<br><small>Full Package</small></button>
+                <button class="level-btn" onclick="selectLevel(4)">Level 4<br><small>Level 3 + Records</small></button>
+                <button class="level-btn" onclick="selectLevel(5)">Level 5<br><small>All + On-site</small></button>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>PPAP Package Checklist</h2>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" style="width: 0%">0%</div>
+            </div>
+            
+            <div class="checklist">
+                <h3>18 Required PPAP Elements:</h3>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item1" onchange="updateProgress()">
+                    <label for="item1">1. Design Records (if applicable)</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item2" onchange="updateProgress()">
+                    <label for="item2">2. Engineering Change Documents</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item3" onchange="updateProgress()">
+                    <label for="item3">3. Customer Engineering Approval</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item4" onchange="updateProgress()">
+                    <label for="item4">4. Design FMEA</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item5" onchange="updateProgress()">
+                    <label for="item5">5. Process Flow Diagram</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item6" onchange="updateProgress()">
+                    <label for="item6">6. Process FMEA</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item7" onchange="updateProgress()">
+                    <label for="item7">7. Control Plan</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item8" onchange="updateProgress()">
+                    <label for="item8">8. Measurement System Analysis (MSA)</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item9" onchange="updateProgress()">
+                    <label for="item9">9. Dimensional Results</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item10" onchange="updateProgress()">
+                    <label for="item10">10. Material/Performance Test Results</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item11" onchange="updateProgress()">
+                    <label for="item11">11. Initial Process Studies (Cpk)</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item12" onchange="updateProgress()">
+                    <label for="item12">12. Qualified Laboratory Documentation</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item13" onchange="updateProgress()">
+                    <label for="item13">13. Appearance Approval Report (AAR)</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item14" onchange="updateProgress()">
+                    <label for="item14">14. Sample Production Parts</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item15" onchange="updateProgress()">
+                    <label for="item15">15. Master Sample</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item16" onchange="updateProgress()">
+                    <label for="item16">16. Checking Aids</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item17" onchange="updateProgress()">
+                    <label for="item17">17. Customer-Specific Requirements</label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="item18" onchange="updateProgress()">
+                    <label for="item18">18. Part Submission Warrant (PSW)</label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" onclick="generatePPAP()">📋 Generate PPAP Summary Report</button>
+    </div>
+    
+    <script>
+        let selectedLevel = 3;
+        
+        function selectLevel(level) {
+            selectedLevel = level;
+            document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            const checked = document.querySelectorAll('.checklist input[type="checkbox"]:checked');
+            const percentage = Math.round((checked.length / checkboxes.length) * 100);
+            
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressBar').textContent = percentage + '%';
+            
+            // Update checkbox item styling
+            checkboxes.forEach(cb => {
+                const item = cb.closest('.checkbox-item');
+                if (cb.checked) {
+                    item.classList.add('checked');
+                } else {
+                    item.classList.remove('checked');
+                }
+            });
+        }
+        
+        function generatePPAP() {
+            let report = 'PPAP SUBMISSION SUMMARY\n\n';
+            report += '='.repeat(50) + '\n\n';
+            report += 'Part Number: ' + document.getElementById('partNumber').value + '\n';
+            report += 'Part Name: ' + document.getElementById('partName').value + '\n';
+            report += 'Supplier: ' + document.getElementById('supplierName').value + '\n';
+            report += 'Customer: ' + document.getElementById('customer').value + '\n';
+            report += 'Submission Date: ' + document.getElementById('submissionDate').value + '\n';
+            report += 'Submitter: ' + document.getElementById('submitterName').value + '\n';
+            report += 'PPAP Level: Level ' + selectedLevel + '\n\n';
+            report += '='.repeat(50) + '\n\n';
+            report += 'PACKAGE CHECKLIST:\n\n';
+            
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            checkboxes.forEach((cb, index) => {
+                const label = cb.nextElementSibling.textContent;
+                const status = cb.checked ? '[✓] COMPLETE' : '[ ] PENDING';
+                report += status + ' - ' + label + '\n';
+            });
+            
+            const checked = document.querySelectorAll('.checklist input[type="checkbox"]:checked').length;
+            const total = checkboxes.length;
+            const percentage = Math.round((checked / total) * 100);
+            
+            report += '\n' + '='.repeat(50) + '\n';
+            report += 'COMPLETION STATUS: ' + checked + '/' + total + ' (' + percentage + '%)\n';
+            
+            // Download as text file
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'PPAP_Summary_' + document.getElementById('partNumber').value + '_' + new Date().toISOString().split('T')[0] + '.txt';
+            a.click();
+            
+            alert('PPAP Summary Report Generated!\n\nCompletion: ' + percentage + '%\nCheck your downloads folder.');
+        }
+    </script>
+</body>
+</html>

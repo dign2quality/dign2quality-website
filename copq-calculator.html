@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost of Poor Quality (COPQ) Calculator | Dign2Quality</title>
+    <meta name="description" content="Calculate your Cost of Poor Quality (COPQ) - Free quality management tool from Dign2Quality">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 3px solid #667eea;
+        }
+        
+        .results h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f8f9fa;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+        
+        .result-item.total {
+            background: #667eea;
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        
+        .result-label {
+            font-weight: 600;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            color: #764ba2;
+        }
+        
+        .result-item.total .result-value {
+            color: white;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>💰 COPQ Calculator</h1>
+            <p>Calculate Your Cost of Poor Quality</p>
+        </div>
+        
+        <div class="section">
+            <h2>Internal Failure Costs</h2>
+            <div class="input-group">
+                <label>Scrap & Rework Costs ($)</label>
+                <input type="number" id="scrap" placeholder="Enter amount" value="0">
+            </div>
+            <div class="input-group">
+                <label>Re-inspection Costs ($)</label>
+                <input type="number" id="reinspection" placeholder="Enter amount" value="0">
+            </div>
+            <div class="input-group">
+                <label>Downtime Costs ($)</label>
+                <input type="number" id="downtime" placeholder="Enter amount" value="0">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>External Failure Costs</h2>
+            <div class="input-group">
+                <label>Warranty Claims ($)</label>
+                <input type="number" id="warranty" placeholder="Enter amount" value="0">
+            </div>
+            <div class="input-group">
+                <label>Customer Returns ($)</label>
+                <input type="number" id="returns" placeholder="Enter amount" value="0">
+            </div>
+            <div class="input-group">
+                <label>Complaint Handling ($)</label>
+                <input type="number" id="complaints" placeholder="Enter amount" value="0">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Appraisal Costs</h2>
+            <div class="input-group">
+                <label>Inspection Costs ($)</label>
+                <input type="number" id="inspection" placeholder="Enter amount" value="0">
+            </div>
+            <div class="input-group">
+                <label>Testing Costs ($)</label>
+                <input type="number" id="testing" placeholder="Enter amount" value="0">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Prevention Costs</h2>
+            <div class="input-group">
+                <label>Training Costs ($)</label>
+                <input type="number" id="training" placeholder="Enter amount" value="0">
+            </div>
+            <div class="input-group">
+                <label>Quality Planning ($)</label>
+                <input type="number" id="planning" placeholder="Enter amount" value="0">
+            </div>
+        </div>
+        
+        <button class="calculate-btn" onclick="calculateCOPQ()">Calculate COPQ</button>
+        
+        <div id="results" class="results hidden">
+            <h2>📊 Your COPQ Results</h2>
+            <div class="result-item">
+                <span class="result-label">Internal Failure Costs:</span>
+                <span class="result-value" id="internalTotal">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">External Failure Costs:</span>
+                <span class="result-value" id="externalTotal">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Appraisal Costs:</span>
+                <span class="result-value" id="appraisalTotal">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Prevention Costs:</span>
+                <span class="result-value" id="preventionTotal">$0</span>
+            </div>
+            <div class="result-item total">
+                <span class="result-label">TOTAL COPQ:</span>
+                <span class="result-value" id="totalCOPQ">$0</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function calculateCOPQ() {
+            // Get all input values
+            const scrap = parseFloat(document.getElementById('scrap').value) || 0;
+            const reinspection = parseFloat(document.getElementById('reinspection').value) || 0;
+            const downtime = parseFloat(document.getElementById('downtime').value) || 0;
+            
+            const warranty = parseFloat(document.getElementById('warranty').value) || 0;
+            const returns = parseFloat(document.getElementById('returns').value) || 0;
+            const complaints = parseFloat(document.getElementById('complaints').value) || 0;
+            
+            const inspection = parseFloat(document.getElementById('inspection').value) || 0;
+            const testing = parseFloat(document.getElementById('testing').value) || 0;
+            
+            const training = parseFloat(document.getElementById('training').value) || 0;
+            const planning = parseFloat(document.getElementById('planning').value) || 0;
+            
+            // Calculate totals
+            const internalTotal = scrap + reinspection + downtime;
+            const externalTotal = warranty + returns + complaints;
+            const appraisalTotal = inspection + testing;
+            const preventionTotal = training + planning;
+            const totalCOPQ = internalTotal + externalTotal + appraisalTotal + preventionTotal;
+            
+            // Display results
+            document.getElementById('internalTotal').textContent = '$' + internalTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('externalTotal').textContent = '$' + externalTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('appraisalTotal').textContent = '$' + appraisalTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('preventionTotal').textContent = '$' + preventionTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('totalCOPQ').textContent = '$' + totalCOPQ.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            
+            // Show results
+            document.getElementById('results').classList.remove('hidden');
+            
+            // Smooth scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

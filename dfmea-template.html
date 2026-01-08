@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFMEA Template | Dign2Quality</title>
+    <meta name="description" content="Design Failure Mode and Effects Analysis (DFMEA) Template - Free quality management tool">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 0.85em;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        td {
+            padding: 10px 8px;
+            border: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .rpn-high { background: #ffebee; font-weight: bold; }
+        .rpn-medium { background: #fff9e6; }
+        .rpn-low { background: #e8f5e9; }
+        .hidden { display: none; }
+        input[type="number"] {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>🔍 DFMEA Template</h1>
+            <p>Design Failure Mode and Effects Analysis</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Project Information</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Product/Part Name</label>
+                    <input type="text" id="productName" placeholder="Enter product name">
+                </div>
+                <div class="input-group">
+                    <label>Part Number</label>
+                    <input type="text" id="partNumber" placeholder="Enter part number">
+                </div>
+                <div class="input-group">
+                    <label>Team Lead</label>
+                    <input type="text" id="teamLead" placeholder="Enter team lead name">
+                </div>
+                <div class="input-group">
+                    <label>DFMEA Date</label>
+                    <input type="date" id="dfmeaDate">
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-primary" onclick="addRow()">+ Add Failure Mode</button>
+            <button class="btn btn-secondary" onclick="exportDFMEA()">📥 Export to CSV</button>
+            <button class="btn btn-secondary" onclick="printDFMEA()">🖨️ Print</button>
+        </div>
+        
+        <div class="table-container">
+            <table id="dfmeaTable">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Function</th>
+                        <th>Failure Mode</th>
+                        <th>Effects</th>
+                        <th>SEV</th>
+                        <th>Causes</th>
+                        <th>OCC</th>
+                        <th>Current Controls</th>
+                        <th>DET</th>
+                        <th>RPN</th>
+                        <th>Actions</th>
+                        <th>Responsibility</th>
+                        <th>Target Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="dfmeaBody">
+                    <!-- Rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        let rowCount = 0;
+        
+        function addRow() {
+            rowCount++;
+            const tbody = document.getElementById('dfmeaBody');
+            const row = tbody.insertRow();
+            
+            row.innerHTML = `
+                <td><input type="text" value="${rowCount}" style="width:40px"></td>
+                <td><input type="text" placeholder="Function"></td>
+                <td><input type="text" placeholder="Failure mode"></td>
+                <td><textarea rows="2" placeholder="Effects"></textarea></td>
+                <td><input type="number" min="1" max="10" value="5" onchange="calculateRPN(this)"></td>
+                <td><textarea rows="2" placeholder="Causes"></textarea></td>
+                <td><input type="number" min="1" max="10" value="5" onchange="calculateRPN(this)"></td>
+                <td><textarea rows="2" placeholder="Current controls"></textarea></td>
+                <td><input type="number" min="1" max="10" value="5" onchange="calculateRPN(this)"></td>
+                <td class="rpn-value" style="font-weight:bold;text-align:center;">125</td>
+                <td><textarea rows="2" placeholder="Recommended actions"></textarea></td>
+                <td><input type="text" placeholder="Owner"></td>
+                <td><input type="date"></td>
+                <td><button class="btn btn-secondary" onclick="this.closest('tr').remove()">Delete</button></td>
+            `;
+        }
+        
+        function calculateRPN(input) {
+            const row = input.closest('tr');
+            const sev = parseInt(row.cells[4].querySelector('input').value) || 0;
+            const occ = parseInt(row.cells[6].querySelector('input').value) || 0;
+            const det = parseInt(row.cells[8].querySelector('input').value) || 0;
+            const rpn = sev * occ * det;
+            
+            const rpnCell = row.cells[9];
+            rpnCell.textContent = rpn;
+            
+            // Color code RPN
+            rpnCell.className = '';
+            if (rpn >= 200) rpnCell.classList.add('rpn-high');
+            else if (rpn >= 100) rpnCell.classList.add('rpn-medium');
+            else rpnCell.classList.add('rpn-low');
+        }
+        
+        function exportDFMEA() {
+            let csv = 'Item,Function,Failure Mode,Effects,SEV,Causes,OCC,Current Controls,DET,RPN,Actions,Responsibility,Target Date\n';
+            
+            const rows = document.querySelectorAll('#dfmeaBody tr');
+            rows.forEach(row => {
+                const cells = row.cells;
+                const data = [
+                    cells[0].querySelector('input').value,
+                    cells[1].querySelector('input').value,
+                    cells[2].querySelector('input').value,
+                    cells[3].querySelector('textarea').value,
+                    cells[4].querySelector('input').value,
+                    cells[5].querySelector('textarea').value,
+                    cells[6].querySelector('input').value,
+                    cells[7].querySelector('textarea').value,
+                    cells[8].querySelector('input').value,
+                    cells[9].textContent,
+                    cells[10].querySelector('textarea').value,
+                    cells[11].querySelector('input').value,
+                    cells[12].querySelector('input').value
+                ];
+                csv += data.map(d => `"${d}"`).join(',') + '\n';
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `DFMEA_${document.getElementById('productName').value || 'export'}_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+        
+        function printDFMEA() {
+            window.print();
+        }
+        
+        // Add initial rows
+        addRow();
+        addRow();
+        addRow();
+    </script>
+</body>
+</html>

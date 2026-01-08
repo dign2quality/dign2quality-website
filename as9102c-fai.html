@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS9102C First Article Inspection Tool | Dign2Quality</title>
+    <meta name="description" content="AS9102C FAI Documentation Tool - Free aerospace quality management tool">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .form-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 0.9em;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .status-pass { background: #d4edda; color: #155724; font-weight: bold; }
+        .status-fail { background: #f8d7da; color: #721c24; font-weight: bold; }
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>✈️ AS9102C FAI Tool</h1>
+            <p>First Article Inspection Documentation</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Form 1: Part Number Accountability</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Part Number</label>
+                    <input type="text" id="partNumber" placeholder="Enter part number">
+                </div>
+                <div class="input-group">
+                    <label>Part Name/Description</label>
+                    <input type="text" id="partName" placeholder="Enter part description">
+                </div>
+                <div class="input-group">
+                    <label>Manufacturer Name</label>
+                    <input type="text" id="manufacturer" placeholder="Enter manufacturer">
+                </div>
+                <div class="input-group">
+                    <label>Manufacturer Code</label>
+                    <input type="text" id="mfgCode" placeholder="Enter code">
+                </div>
+                <div class="input-group">
+                    <label>PO Number</label>
+                    <input type="text" id="poNumber" placeholder="Enter PO number">
+                </div>
+                <div class="input-group">
+                    <label>Serial/Lot Number</label>
+                    <input type="text" id="serialNumber" placeholder="Enter serial/lot">
+                </div>
+                <div class="input-group">
+                    <label>Inspector Name</label>
+                    <input type="text" id="inspector" placeholder="Enter inspector name">
+                </div>
+                <div class="input-group">
+                    <label>Inspection Date</label>
+                    <input type="date" id="inspectionDate">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Form 2: Product Accountability</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Drawing Number</label>
+                    <input type="text" id="drawingNumber" placeholder="Enter drawing number">
+                </div>
+                <div class="input-group">
+                    <label>Drawing Revision</label>
+                    <input type="text" id="drawingRev" placeholder="Enter revision">
+                </div>
+                <div class="input-group">
+                    <label>Specification</label>
+                    <input type="text" id="specification" placeholder="Enter specification">
+                </div>
+                <div class="input-group">
+                    <label>Customer</label>
+                    <input type="text" id="customer" placeholder="Enter customer name">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Form 3: Characteristic Accountability</h2>
+            <div class="controls">
+                <button class="btn btn-primary" onclick="addCharacteristic()">+ Add Characteristic</button>
+                <button class="btn btn-secondary" onclick="exportFAI()">📥 Export to CSV</button>
+                <button class="btn btn-secondary" onclick="printFAI()">🖨️ Print FAI Report</button>
+            </div>
+            
+            <div class="table-container">
+                <table id="characteristicTable">
+                    <thead>
+                        <tr>
+                            <th>Item #</th>
+                            <th>Characteristic</th>
+                            <th>Specification</th>
+                            <th>Actual Result</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Comments</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="characteristicBody">
+                        <!-- Rows added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Final Approval</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Quality Engineer</label>
+                    <input type="text" id="qeApproval" placeholder="Enter QE name">
+                </div>
+                <div class="input-group">
+                    <label>Date</label>
+                    <input type="date" id="qeDate">
+                </div>
+                <div class="input-group">
+                    <label>Final Status</label>
+                    <select id="finalStatus">
+                        <option value="">Select status</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Approved with Comments">Approved with Comments</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let charCount = 0;
+        
+        function addCharacteristic() {
+            charCount++;
+            const tbody = document.getElementById('characteristicBody');
+            const row = tbody.insertRow();
+            
+            row.innerHTML = `
+                <td style="text-align:center;">${charCount}</td>
+                <td><input type="text" placeholder="e.g., Length" style="width:100%;"></td>
+                <td><input type="text" placeholder="e.g., 10.0 ± 0.1" style="width:100%;"></td>
+                <td><input type="text" placeholder="Measured value" style="width:100%;"></td>
+                <td>
+                    <select style="width:100%;">
+                        <option>CMM</option>
+                        <option>Caliper</option>
+                        <option>Micrometer</option>
+                        <option>Visual</option>
+                        <option>Other</option>
+                    </select>
+                </td>
+                <td>
+                    <select style="width:100%;" onchange="updateStatus(this)">
+                        <option value="">Select</option>
+                        <option value="Pass">Pass</option>
+                        <option value="Fail">Fail</option>
+                    </select>
+                </td>
+                <td><input type="text" placeholder="Comments" style="width:100%;"></td>
+                <td><button class="btn btn-secondary" onclick="this.closest('tr').remove()">Delete</button></td>
+            `;
+        }
+        
+        function updateStatus(select) {
+            const cell = select.parentElement;
+            cell.className = select.value === 'Pass' ? 'status-pass' : 'status-fail';
+        }
+        
+        function exportFAI() {
+            let csv = 'AS9102C First Article Inspection Report\n\n';
+            csv += 'Part Number:,' + document.getElementById('partNumber').value + '\n';
+            csv += 'Part Name:,' + document.getElementById('partName').value + '\n';
+            csv += 'Inspector:,' + document.getElementById('inspector').value + '\n';
+            csv += 'Date:,' + document.getElementById('inspectionDate').value + '\n\n';
+            
+            csv += 'Item,Characteristic,Specification,Actual,Method,Status,Comments\n';
+            
+            const rows = document.querySelectorAll('#characteristicBody tr');
+            rows.forEach(row => {
+                const cells = row.cells;
+                csv += `${cells[0].textContent},`;
+                csv += `"${cells[1].querySelector('input').value}",`;
+                csv += `"${cells[2].querySelector('input').value}",`;
+                csv += `"${cells[3].querySelector('input').value}",`;
+                csv += `${cells[4].querySelector('select').value},`;
+                csv += `${cells[5].querySelector('select').value},`;
+                csv += `"${cells[6].querySelector('input').value}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `FAI_${document.getElementById('partNumber').value}_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+        
+        function printFAI() {
+            window.print();
+        }
+        
+        // Add initial characteristics
+        addCharacteristic();
+        addCharacteristic();
+        addCharacteristic();
+    </script>
+</body>
+</html>

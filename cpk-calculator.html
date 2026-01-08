@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cp/Cpk Process Capability Calculator | Dign2Quality</title>
+    <meta name="description" content="Calculate Cp and Cpk process capability indices - Free quality management tool from Dign2Quality">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 3px solid #667eea;
+        }
+        
+        .results h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .result-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .result-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .result-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .interpretation {
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .excellent {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .adequate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .inadequate {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .info-box ul {
+            margin-left: 20px;
+        }
+        
+        .info-box li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📊 Cp/Cpk Calculator</h1>
+            <p>Process Capability Analysis Tool</p>
+        </div>
+        
+        <div class="section">
+            <h2>Process Specifications</h2>
+            <div class="input-group">
+                <label>Upper Specification Limit (USL)</label>
+                <input type="number" step="any" id="usl" placeholder="Enter USL">
+            </div>
+            <div class="input-group">
+                <label>Lower Specification Limit (LSL)</label>
+                <input type="number" step="any" id="lsl" placeholder="Enter LSL">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Process Performance</h2>
+            <div class="input-group">
+                <label>Process Mean (μ)</label>
+                <input type="number" step="any" id="mean" placeholder="Enter process mean">
+            </div>
+            <div class="input-group">
+                <label>Standard Deviation (σ)</label>
+                <input type="number" step="any" id="stddev" placeholder="Enter standard deviation">
+            </div>
+        </div>
+        
+        <button class="calculate-btn" onclick="calculateCapability()">Calculate Cp & Cpk</button>
+        
+        <div id="results" class="results hidden">
+            <h2>📈 Capability Results</h2>
+            
+            <div class="result-card">
+                <h3>Cp (Process Potential)</h3>
+                <div class="result-value" id="cpValue">-</div>
+                <div id="cpInterpretation" class="interpretation"></div>
+            </div>
+            
+            <div class="result-card">
+                <h3>Cpk (Process Performance)</h3>
+                <div class="result-value" id="cpkValue">-</div>
+                <div id="cpkInterpretation" class="interpretation"></div>
+            </div>
+            
+            <div class="info-box">
+                <h3>📚 Interpretation Guide:</h3>
+                <ul>
+                    <li><strong>Cpk ≥ 1.67:</strong> Excellent - 6 Sigma capable</li>
+                    <li><strong>Cpk ≥ 1.33:</strong> Adequate - Process is capable</li>
+                    <li><strong>Cpk < 1.33:</strong> Inadequate - Process improvement needed</li>
+                    <li><strong>Cpk < 1.0:</strong> Critical - Producing defects</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function calculateCapability() {
+            const usl = parseFloat(document.getElementById('usl').value);
+            const lsl = parseFloat(document.getElementById('lsl').value);
+            const mean = parseFloat(document.getElementById('mean').value);
+            const stddev = parseFloat(document.getElementById('stddev').value);
+            
+            // Validation
+            if (isNaN(usl) || isNaN(lsl) || isNaN(mean) || isNaN(stddev)) {
+                alert('Please fill in all fields with valid numbers');
+                return;
+            }
+            
+            if (stddev <= 0) {
+                alert('Standard deviation must be greater than 0');
+                return;
+            }
+            
+            if (usl <= lsl) {
+                alert('USL must be greater than LSL');
+                return;
+            }
+            
+            // Calculate Cp
+            const cp = (usl - lsl) / (6 * stddev);
+            
+            // Calculate Cpk
+            const cpuUpper = (usl - mean) / (3 * stddev);
+            const cplLower = (mean - lsl) / (3 * stddev);
+            const cpk = Math.min(cpuUpper, cplLower);
+            
+            // Display results
+            document.getElementById('cpValue').textContent = cp.toFixed(3);
+            document.getElementById('cpkValue').textContent = cpk.toFixed(3);
+            
+            // Cp interpretation
+            const cpInterp = document.getElementById('cpInterpretation');
+            if (cp >= 1.67) {
+                cpInterp.textContent = '✓ Excellent capability';
+                cpInterp.className = 'interpretation excellent';
+            } else if (cp >= 1.33) {
+                cpInterp.textContent = '✓ Adequate capability';
+                cpInterp.className = 'interpretation adequate';
+            } else {
+                cpInterp.textContent = '⚠ Improvement needed';
+                cpInterp.className = 'interpretation inadequate';
+            }
+            
+            // Cpk interpretation
+            const cpkInterp = document.getElementById('cpkInterpretation');
+            if (cpk >= 1.67) {
+                cpkInterp.textContent = '✓ Excellent performance';
+                cpkInterp.className = 'interpretation excellent';
+            } else if (cpk >= 1.33) {
+                cpkInterp.textContent = '✓ Adequate performance';
+                cpkInterp.className = 'interpretation adequate';
+            } else if (cpk >= 1.0) {
+                cpkInterp.textContent = '⚠ Marginally capable';
+                cpkInterp.className = 'interpretation inadequate';
+            } else {
+                cpkInterp.textContent = '⚠ Critical - Producing defects';
+                cpkInterp.className = 'interpretation inadequate';
+            }
+            
+            // Show results
+            document.getElementById('results').classList.remove('hidden');
+            
+            // Smooth scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

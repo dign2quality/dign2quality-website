@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QMS Audit Checklist | Dign2Quality</title>
+    <meta name="description" content="Quality Management System Audit Checklist Tool - Free quality management tool">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .standard-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .standard-btn {
+            padding: 12px 24px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        .standard-btn:hover {
+            border-color: #667eea;
+        }
+        .standard-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        .progress {
+            background: #e9ecef;
+            border-radius: 8px;
+            height: 40px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .audit-section {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .audit-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .audit-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            background: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            gap: 15px;
+        }
+        .audit-item-number {
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .audit-item-content {
+            flex: 1;
+        }
+        .audit-item-requirement {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .audit-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .audit-controls select {
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+        .audit-controls input {
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .status-compliant { background: #d4edda; color: #155724; font-weight: bold; }
+        .status-minor { background: #fff3cd; color: #856404; font-weight: bold; }
+        .status-major { background: #f8d7da; color: #721c24; font-weight: bold; }
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .summary-section {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .summary-card h4 {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .summary-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>✅ QMS Audit Checklist</h1>
+            <p>Quality Management System Audit Tool</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Audit Information</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Organization Name</label>
+                    <input type="text" id="orgName" placeholder="Enter organization name">
+                </div>
+                <div class="input-group">
+                    <label>Audit Date</label>
+                    <input type="date" id="auditDate">
+                </div>
+                <div class="input-group">
+                    <label>Lead Auditor</label>
+                    <input type="text" id="leadAuditor" placeholder="Enter auditor name">
+                </div>
+                <div class="input-group">
+                    <label>Audit Type</label>
+                    <select id="auditType">
+                        <option>Internal Audit</option>
+                        <option>External Audit</option>
+                        <option>Surveillance Audit</option>
+                        <option>Recertification Audit</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Select QMS Standard</h2>
+            <div class="standard-selector">
+                <button class="standard-btn active" onclick="selectStandard('ISO9001')">ISO 9001</button>
+                <button class="standard-btn" onclick="selectStandard('AS9100')">AS9100</button>
+                <button class="standard-btn" onclick="selectStandard('IATF16949')">IATF 16949</button>
+                <button class="standard-btn" onclick="selectStandard('ISO13485')">ISO 13485</button>
+            </div>
+        </div>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 0%">0% Complete</div>
+        </div>
+        
+        <div id="checklistSections">
+            <!-- Audit sections will be generated here -->
+        </div>
+        
+        <div class="summary-section">
+            <h2>Audit Summary</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h4>Total Items</h4>
+                    <div class="value" id="totalItems">0</div>
+                </div>
+                <div class="summary-card">
+                    <h4>Compliant</h4>
+                    <div class="value" style="color: #28a745;" id="compliantItems">0</div>
+                </div>
+                <div class="summary-card">
+                    <h4>Minor NC</h4>
+                    <div class="value" style="color: #fd7e14;" id="minorItems">0</div>
+                </div>
+                <div class="summary-card">
+                    <h4>Major NC</h4>
+                    <div class="value" style="color: #dc3545;" id="majorItems">0</div>
+                </div>
+                <div class="summary-card">
+                    <h4>Not Audited</h4>
+                    <div class="value" style="color: #6c757d;" id="naItems">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <button class="btn btn-primary" onclick="generateReport()">📋 Generate Audit Report</button>
+            <button class="btn btn-secondary" onclick="exportAudit()">📥 Export to CSV</button>
+            <button class="btn btn-secondary" onclick="printAudit()">🖨️ Print</button>
+        </div>
+    </div>
+    
+    <script>
+        let currentStandard = 'ISO9001';
+        let auditItems = [];
+        
+        const standards = {
+            ISO9001: {
+                name: 'ISO 9001:2015',
+                sections: [
+                    {
+                        title: 'Context of the Organization (Clause 4)',
+                        items: [
+                            '4.1 Understanding the organization and its context',
+                            '4.2 Understanding the needs and expectations of interested parties',
+                            '4.3 Determining the scope of the QMS',
+                            '4.4 Quality management system and its processes'
+                        ]
+                    },
+                    {
+                        title: 'Leadership (Clause 5)',
+                        items: [
+                            '5.1 Leadership and commitment',
+                            '5.2 Quality policy',
+                            '5.3 Organizational roles, responsibilities and authorities'
+                        ]
+                    },
+                    {
+                        title: 'Planning (Clause 6)',
+                        items: [
+                            '6.1 Actions to address risks and opportunities',
+                            '6.2 Quality objectives and planning to achieve them',
+                            '6.3 Planning of changes'
+                        ]
+                    },
+                    {
+                        title: 'Support (Clause 7)',
+                        items: [
+                            '7.1 Resources',
+                            '7.2 Competence',
+                            '7.3 Awareness',
+                            '7.4 Communication',
+                            '7.5 Documented information'
+                        ]
+                    },
+                    {
+                        title: 'Operation (Clause 8)',
+                        items: [
+                            '8.1 Operational planning and control',
+                            '8.2 Requirements for products and services',
+                            '8.3 Design and development',
+                            '8.4 Control of externally provided processes',
+                            '8.5 Production and service provision',
+                            '8.6 Release of products and services',
+                            '8.7 Control of nonconforming outputs'
+                        ]
+                    },
+                    {
+                        title: 'Performance Evaluation (Clause 9)',
+                        items: [
+                            '9.1 Monitoring, measurement, analysis and evaluation',
+                            '9.2 Internal audit',
+                            '9.3 Management review'
+                        ]
+                    },
+                    {
+                        title: 'Improvement (Clause 10)',
+                        items: [
+                            '10.1 General',
+                            '10.2 Nonconformity and corrective action',
+                            '10.3 Continual improvement'
+                        ]
+                    }
+                ]
+            }
+        };
+        
+        function selectStandard(standard) {
+            currentStandard = standard;
+            document.querySelectorAll('.standard-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            generateChecklist();
+        }
+        
+        function generateChecklist() {
+            const container = document.getElementById('checklistSections');
+            container.innerHTML = '';
+            auditItems = [];
+            
+            const standard = standards[currentStandard];
+            let itemCount = 0;
+            
+            standard.sections.forEach(section => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'audit-section';
+                
+                const sectionTitle = document.createElement('h3');
+                sectionTitle.textContent = section.title;
+                sectionDiv.appendChild(sectionTitle);
+                
+                section.items.forEach(item => {
+                    itemCount++;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'audit-item';
+                    itemDiv.innerHTML = `
+                        <div class="audit-item-number">${itemCount}</div>
+                        <div class="audit-item-content">
+                            <div class="audit-item-requirement">${item}</div>
+                            <div class="audit-controls">
+                                <select onchange="updateStatus(${itemCount})">
+                                    <option value="">Not Audited</option>
+                                    <option value="Compliant">Compliant</option>
+                                    <option value="Minor">Minor NC</option>
+                                    <option value="Major">Major NC</option>
+                                </select>
+                                <input type="text" placeholder="Finding / Comment" onchange="updateStatus(${itemCount})">
+                            </div>
+                        </div>
+                    `;
+                    sectionDiv.appendChild(itemDiv);
+                    
+                    auditItems.push({
+                        id: itemCount,
+                        requirement: item,
+                        status: '',
+                        comment: ''
+                    });
+                });
+                
+                container.appendChild(sectionDiv);
+            });
+            
+            updateSummary();
+        }
+        
+        function updateStatus(itemId) {
+            const item = document.querySelectorAll('.audit-item')[itemId - 1];
+            const select = item.querySelector('select');
+            const input = item.querySelector('input');
+            
+            auditItems[itemId - 1].status = select.value;
+            auditItems[itemId - 1].comment = input.value;
+            
+            updateSummary();
+        }
+        
+        function updateSummary() {
+            const total = auditItems.length;
+            const compliant = auditItems.filter(i => i.status === 'Compliant').length;
+            const minor = auditItems.filter(i => i.status === 'Minor').length;
+            const major = auditItems.filter(i => i.status === 'Major').length;
+            const na = auditItems.filter(i => i.status === '').length;
+            
+            const completed = total - na;
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressBar').textContent = percentage + '% Complete';
+            
+            document.getElementById('totalItems').textContent = total;
+            document.getElementById('compliantItems').textContent = compliant;
+            document.getElementById('minorItems').textContent = minor;
+            document.getElementById('majorItems').textContent = major;
+            document.getElementById('naItems').textContent = na;
+        }
+        
+        function generateReport() {
+            let report = 'QUALITY MANAGEMENT SYSTEM AUDIT REPORT\n';
+            report += '='.repeat(60) + '\n\n';
+            report += 'Standard: ' + standards[currentStandard].name + '\n';
+            report += 'Organization: ' + document.getElementById('orgName').value + '\n';
+            report += 'Audit Date: ' + document.getElementById('auditDate').value + '\n';
+            report += 'Lead Auditor: ' + document.getElementById('leadAuditor').value + '\n';
+            report += 'Audit Type: ' + document.getElementById('auditType').value + '\n\n';
+            report += '='.repeat(60) + '\n\n';
+            
+            const compliant = auditItems.filter(i => i.status === 'Compliant').length;
+            const minor = auditItems.filter(i => i.status === 'Minor').length;
+            const major = auditItems.filter(i => i.status === 'Major').length;
+            
+            report += 'AUDIT SUMMARY:\n';
+            report += `Total Requirements Audited: ${auditItems.length - auditItems.filter(i => i.status === '').length}\n`;
+            report += `Compliant: ${compliant}\n`;
+            report += `Minor Non-Conformities: ${minor}\n`;
+            report += `Major Non-Conformities: ${major}\n\n`;
+            report += '='.repeat(60) + '\n\n';
+            
+            if (minor > 0 || major > 0) {
+                report += 'NON-CONFORMITIES:\n\n';
+                auditItems.forEach((item, index) => {
+                    if (item.status === 'Minor' || item.status === 'Major') {
+                        report += `[${item.status.toUpperCase()}] ${item.requirement}\n`;
+                        report += `Finding: ${item.comment}\n\n`;
+                    }
+                });
+            }
+            
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `QMS_Audit_Report_${document.getElementById('orgName').value}_${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+            
+            alert('Audit Report Generated!');
+        }
+        
+        function exportAudit() {
+            let csv = 'Item,Requirement,Status,Finding/Comment\n';
+            
+            auditItems.forEach(item => {
+                csv += `"${item.id}","${item.requirement}","${item.status}","${item.comment}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `QMS_Audit_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+        
+        function printAudit() {
+            window.print();
+        }
+        
+        // Initialize
+        generateChecklist();
+    </script>
+</body>
+</html>

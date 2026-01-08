@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSA Gage R&R Calculator | Dign2Quality</title>
+    <meta name="description" content="Measurement System Analysis Gage R&R Calculator - Free quality management tool">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .data-grid input {
+            padding: 8px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .results {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 3px solid #667eea;
+        }
+        .results h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .result-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .result-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .result-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+        }
+        .interpretation {
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .excellent { background: #d4edda; color: #155724; }
+        .acceptable { background: #fff3cd; color: #856404; }
+        .unacceptable { background: #f8d7da; color: #721c24; }
+        .hidden { display: none; }
+        .info-box {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📏 MSA Gage R&R Calculator</h1>
+            <p>Measurement System Analysis</p>
+        </div>
+        
+        <div class="section">
+            <h2>Study Setup</h2>
+            <div class="input-group">
+                <label>Number of Operators</label>
+                <input type="number" id="numOperators" value="3" min="2" max="5">
+            </div>
+            <div class="input-group">
+                <label>Number of Parts</label>
+                <input type="number" id="numParts" value="10" min="5" max="20">
+            </div>
+            <div class="input-group">
+                <label>Number of Trials (per operator/part)</label>
+                <input type="number" id="numTrials" value="2" min="2" max="3">
+            </div>
+            <div class="input-group">
+                <label>Tolerance (USL - LSL)</label>
+                <input type="number" step="any" id="tolerance" placeholder="Enter tolerance">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Measurement Data</h2>
+            <p style="color:#666; margin-bottom:15px;">Enter measurements for Operator 1, Part 1, Trial 1 and Trial 2 as an example:</p>
+            <div class="data-grid">
+                <input type="number" step="any" id="m1" placeholder="Operator 1, Part 1, Trial 1">
+                <input type="number" step="any" id="m2" placeholder="Operator 1, Part 1, Trial 2">
+                <input type="number" step="any" id="m3" placeholder="Additional measurements...">
+            </div>
+            <p style="color:#999; font-size:0.9em; margin-top:10px;">Note: This simplified calculator demonstrates the concept. For full MSA studies, use statistical software.</p>
+        </div>
+        
+        <button class="btn btn-primary" onclick="calculateGRR()">Calculate Gage R&R</button>
+        
+        <div id="results" class="results hidden">
+            <h2>📊 Gage R&R Results</h2>
+            
+            <div class="result-card">
+                <h3>% Gage R&R</h3>
+                <div class="result-value" id="grrValue">-</div>
+                <div id="grrInterpretation" class="interpretation"></div>
+            </div>
+            
+            <div class="result-card">
+                <h3>% Repeatability</h3>
+                <div class="result-value" id="repeatValue">-</div>
+            </div>
+            
+            <div class="result-card">
+                <h3>% Reproducibility</h3>
+                <div class="result-value" id="reprodValue">-</div>
+            </div>
+            
+            <div class="info-box">
+                <h3>📚 Interpretation Guide:</h3>
+                <ul style="margin-left:20px; color:#555;">
+                    <li><strong>&lt; 10%:</strong> Excellent measurement system</li>
+                    <li><strong>10-30%:</strong> Acceptable measurement system</li>
+                    <li><strong>&gt; 30%:</strong> Unacceptable - Improvement required</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function calculateGRR() {
+            // Get study parameters
+            const tolerance = parseFloat(document.getElementById('tolerance').value);
+            
+            // Get sample measurements
+            const m1 = parseFloat(document.getElementById('m1').value) || 0;
+            const m2 = parseFloat(document.getElementById('m2').value) || 0;
+            const m3 = parseFloat(document.getElementById('m3').value) || 0;
+            
+            if (!tolerance || tolerance <= 0) {
+                alert('Please enter a valid tolerance value');
+                return;
+            }
+            
+            // Simplified calculation for demonstration
+            // In real MSA, this would involve ANOVA and variance components
+            const range = Math.abs(m1 - m2);
+            const repeatability = (range / tolerance) * 100 * 0.5577; // K1 constant
+            const reproducibility = repeatability * 0.5; // Simplified
+            const gageRR = Math.sqrt(Math.pow(repeatability, 2) + Math.pow(reproducibility, 2));
+            
+            // Display results
+            document.getElementById('grrValue').textContent = gageRR.toFixed(2) + '%';
+            document.getElementById('repeatValue').textContent = repeatability.toFixed(2) + '%';
+            document.getElementById('reprodValue').textContent = reproducibility.toFixed(2) + '%';
+            
+            // Interpretation
+            const interp = document.getElementById('grrInterpretation');
+            if (gageRR < 10) {
+                interp.textContent = '✓ Excellent - Measurement system is acceptable';
+                interp.className = 'interpretation excellent';
+            } else if (gageRR <= 30) {
+                interp.textContent = '⚠ Acceptable - May be acceptable depending on application';
+                interp.className = 'interpretation acceptable';
+            } else {
+                interp.textContent = '✗ Unacceptable - Measurement system needs improvement';
+                interp.className = 'interpretation unacceptable';
+            }
+            
+            // Show results
+            document.getElementById('results').classList.remove('hidden');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

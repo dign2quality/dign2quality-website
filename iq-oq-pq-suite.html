@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ/OQ/PQ Validation Suite | Dign2Quality</title>
+    <meta name="description" content="Installation, Operational, and Performance Qualification Tool - Free quality management tool">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab:hover {
+            color: #667eea;
+        }
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .form-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-right: 10px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 20px;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .status-pass { background: #d4edda; color: #155724; font-weight: bold; text-align: center; }
+        .status-fail { background: #f8d7da; color: #721c24; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>🔬 IQ/OQ/PQ Validation Suite</h1>
+            <p>Equipment Qualification Documentation</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('iq')">IQ - Installation</button>
+            <button class="tab" onclick="showTab('oq')">OQ - Operational</button>
+            <button class="tab" onclick="showTab('pq')">PQ - Performance</button>
+        </div>
+        
+        <!-- Equipment Info (Shared across all tabs) -->
+        <div class="form-section">
+            <h2>Equipment Information</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Equipment Name</label>
+                    <input type="text" id="equipmentName" placeholder="Enter equipment name">
+                </div>
+                <div class="input-group">
+                    <label>Equipment ID</label>
+                    <input type="text" id="equipmentId" placeholder="Enter equipment ID">
+                </div>
+                <div class="input-group">
+                    <label>Manufacturer</label>
+                    <input type="text" id="manufacturer" placeholder="Enter manufacturer">
+                </div>
+                <div class="input-group">
+                    <label>Model Number</label>
+                    <input type="text" id="modelNumber" placeholder="Enter model">
+                </div>
+            </div>
+        </div>
+        
+        <!-- IQ Tab Content -->
+        <div id="iq" class="tab-content active">
+            <div class="form-section">
+                <h2>Installation Qualification (IQ)</h2>
+                <p style="color:#666; margin-bottom:20px;">Verify equipment is installed correctly per specifications</p>
+                
+                <button class="btn btn-primary" onclick="addIQRow()">+ Add IQ Check</button>
+                <button class="btn btn-secondary" onclick="exportIQ()">📥 Export IQ</button>
+                
+                <table id="iqTable">
+                    <thead>
+                        <tr>
+                            <th>Item #</th>
+                            <th>Installation Requirement</th>
+                            <th>Acceptance Criteria</th>
+                            <th>Result</th>
+                            <th>Status</th>
+                            <th>Comments</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="iqBody"></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- OQ Tab Content -->
+        <div id="oq" class="tab-content">
+            <div class="form-section">
+                <h2>Operational Qualification (OQ)</h2>
+                <p style="color:#666; margin-bottom:20px;">Verify equipment operates according to specifications</p>
+                
+                <button class="btn btn-primary" onclick="addOQRow()">+ Add OQ Test</button>
+                <button class="btn btn-secondary" onclick="exportOQ()">📥 Export OQ</button>
+                
+                <table id="oqTable">
+                    <thead>
+                        <tr>
+                            <th>Item #</th>
+                            <th>Operational Test</th>
+                            <th>Expected Result</th>
+                            <th>Actual Result</th>
+                            <th>Status</th>
+                            <th>Comments</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="oqBody"></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- PQ Tab Content -->
+        <div id="pq" class="tab-content">
+            <div class="form-section">
+                <h2>Performance Qualification (PQ)</h2>
+                <p style="color:#666; margin-bottom:20px;">Verify equipment performs consistently under production conditions</p>
+                
+                <button class="btn btn-primary" onclick="addPQRow()">+ Add PQ Test</button>
+                <button class="btn btn-secondary" onclick="exportPQ()">📥 Export PQ</button>
+                
+                <table id="pqTable">
+                    <thead>
+                        <tr>
+                            <th>Item #</th>
+                            <th>Performance Parameter</th>
+                            <th>Specification</th>
+                            <th>Results</th>
+                            <th>Status</th>
+                            <th>Comments</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pqBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let iqCount = 0, oqCount = 0, pqCount = 0;
+        
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+        
+        function addIQRow() {
+            iqCount++;
+            const tbody = document.getElementById('iqBody');
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td style="text-align:center;">${iqCount}</td>
+                <td><input type="text" placeholder="e.g., Electrical connections" style="width:100%;"></td>
+                <td><input type="text" placeholder="Acceptance criteria" style="width:100%;"></td>
+                <td><input type="text" placeholder="Verification result" style="width:100%;"></td>
+                <td>
+                    <select style="width:100%;" onchange="updateStatus(this)">
+                        <option value="">Select</option>
+                        <option value="Pass">Pass</option>
+                        <option value="Fail">Fail</option>
+                    </select>
+                </td>
+                <td><input type="text" placeholder="Comments" style="width:100%;"></td>
+                <td><button class="btn btn-secondary" onclick="this.closest('tr').remove()">Delete</button></td>
+            `;
+        }
+        
+        function addOQRow() {
+            oqCount++;
+            const tbody = document.getElementById('oqBody');
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td style="text-align:center;">${oqCount}</td>
+                <td><input type="text" placeholder="e.g., Temperature accuracy" style="width:100%;"></td>
+                <td><input type="text" placeholder="Expected result" style="width:100%;"></td>
+                <td><input type="text" placeholder="Actual result" style="width:100%;"></td>
+                <td>
+                    <select style="width:100%;" onchange="updateStatus(this)">
+                        <option value="">Select</option>
+                        <option value="Pass">Pass</option>
+                        <option value="Fail">Fail</option>
+                    </select>
+                </td>
+                <td><input type="text" placeholder="Comments" style="width:100%;"></td>
+                <td><button class="btn btn-secondary" onclick="this.closest('tr').remove()">Delete</button></td>
+            `;
+        }
+        
+        function addPQRow() {
+            pqCount++;
+            const tbody = document.getElementById('pqBody');
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td style="text-align:center;">${pqCount}</td>
+                <td><input type="text" placeholder="e.g., Process cycle time" style="width:100%;"></td>
+                <td><input type="text" placeholder="Specification" style="width:100%;"></td>
+                <td><input type="text" placeholder="Test results" style="width:100%;"></td>
+                <td>
+                    <select style="width:100%;" onchange="updateStatus(this)">
+                        <option value="">Select</option>
+                        <option value="Pass">Pass</option>
+                        <option value="Fail">Fail</option>
+                    </select>
+                </td>
+                <td><input type="text" placeholder="Comments" style="width:100%;"></td>
+                <td><button class="btn btn-secondary" onclick="this.closest('tr').remove()">Delete</button></td>
+            `;
+        }
+        
+        function updateStatus(select) {
+            const cell = select.parentElement;
+            cell.className = select.value === 'Pass' ? 'status-pass' : 'status-fail';
+        }
+        
+        function exportIQ() { exportTable('iqBody', 'IQ'); }
+        function exportOQ() { exportTable('oqBody', 'OQ'); }
+        function exportPQ() { exportTable('pqBody', 'PQ'); }
+        
+        function exportTable(bodyId, type) {
+            let csv = `${type} Qualification Report\n`;
+            csv += 'Equipment:,' + document.getElementById('equipmentName').value + '\n\n';
+            csv += 'Item,Requirement,Criteria,Result,Status,Comments\n';
+            
+            const rows = document.querySelectorAll(`#${bodyId} tr`);
+            rows.forEach(row => {
+                const cells = row.cells;
+                const data = [
+                    cells[0].textContent,
+                    cells[1].querySelector('input').value,
+                    cells[2].querySelector('input').value,
+                    cells[3].querySelector('input').value,
+                    cells[4].querySelector('select').value,
+                    cells[5].querySelector('input').value
+                ];
+                csv += data.map(d => `"${d}"`).join(',') + '\n';
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${type}_${document.getElementById('equipmentName').value}_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+        
+        // Add initial rows
+        addIQRow();
+        addIQRow();
+    </script>
+</body>
+</html>
