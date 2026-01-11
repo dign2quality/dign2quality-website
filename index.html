@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Built to Last: Quality as Strategy in Manufacturing | Dign2Quality</title>
-    <meta name="description" content="A pragmatic blueprint for moving quality from the margins to strategy. Complete with tools, templates, and real-world playbooks from aerospace and defense.">
+    <title>Built to Last: Quality as Strategy in Manufacturing | Chad Diggs</title>
+    <meta name="description" content="Stop fighting fires. Start preventing them. A practitioner's blueprint for making quality your competitive advantage—not the scapegoat. By AS9100 Lead Auditor Chad Diggs.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Google Analytics -->
@@ -22,6 +22,11 @@
         .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .card-hover { transition: all 0.3s ease; }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+        .countdown-box { 
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -38,12 +43,13 @@
             </div>
             
             <div class="hidden md:flex items-center gap-6">
-                <a href="#home" class="font-semibold text-blue-600">Home</a>
-                <a href="#chapters" class="font-semibold text-gray-600 hover:text-gray-900">Chapters</a>
-                <a href="#tools" class="font-semibold text-gray-600 hover:text-gray-900">Free Tools</a>
-                <a href="#about" class="font-semibold text-gray-600 hover:text-gray-900">About</a>
+                <a href="index.html" class="font-semibold text-blue-600">Home</a>
+                <a href="about.html" class="font-semibold text-gray-600 hover:text-gray-900">About</a>
+                <a href="chapters.html" class="font-semibold text-gray-600 hover:text-gray-900">Chapters</a>
+                <a href="tools.html" class="font-semibold text-gray-600 hover:text-gray-900">Free Tools</a>
+                <a href="contact.html" class="font-semibold text-gray-600 hover:text-gray-900">Contact</a>
                 <button onclick="scrollToWaitlist()" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">
-                    Pre-Order
+                    Pre-Order Now
                 </button>
             </div>
 
@@ -56,11 +62,12 @@
 
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2 pb-4">
-            <a href="#home" class="block px-4 py-2 rounded hover:bg-gray-100">Home</a>
-            <a href="#chapters" class="block px-4 py-2 rounded hover:bg-gray-100">Chapters</a>
-            <a href="#tools" class="block px-4 py-2 rounded hover:bg-gray-100">Free Tools</a>
-            <a href="#about" class="block px-4 py-2 rounded hover:bg-gray-100">About</a>
-            <button onclick="scrollToWaitlist()" class="w-full bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">Pre-Order</button>
+            <a href="index.html" class="block px-4 py-2 rounded hover:bg-gray-100">Home</a>
+            <a href="about.html" class="block px-4 py-2 rounded hover:bg-gray-100">About</a>
+            <a href="chapters.html" class="block px-4 py-2 rounded hover:bg-gray-100">Chapters</a>
+            <a href="tools.html" class="block px-4 py-2 rounded hover:bg-gray-100">Free Tools</a>
+            <a href="contact.html" class="block px-4 py-2 rounded hover:bg-gray-100">Contact</a>
+            <button onclick="scrollToWaitlist()" class="w-full bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">Pre-Order Now</button>
         </div>
     </div>
 </nav>
@@ -69,417 +76,257 @@
 <section id="home" class="hero-gradient text-white py-20">
     <div class="max-w-7xl mx-auto px-4">
         <div class="text-center space-y-6">
+            <!-- Countdown Timer -->
+            <div class="countdown-box rounded-xl p-4 max-w-2xl mx-auto mb-6">
+                <p class="text-yellow-300 font-semibold text-sm mb-2">LAUNCHING IN:</p>
+                <div id="countdown" class="flex justify-center gap-4 text-center">
+                    <div>
+                        <div class="text-4xl font-bold" id="days">00</div>
+                        <div class="text-xs text-gray-200 mt-1">DAYS</div>
+                    </div>
+                    <div class="text-4xl font-bold">:</div>
+                    <div>
+                        <div class="text-4xl font-bold" id="hours">00</div>
+                        <div class="text-xs text-gray-200 mt-1">HOURS</div>
+                    </div>
+                    <div class="text-4xl font-bold">:</div>
+                    <div>
+                        <div class="text-4xl font-bold" id="minutes">00</div>
+                        <div class="text-xs text-gray-200 mt-1">MINUTES</div>
+                    </div>
+                </div>
+            </div>
+
             <h1 class="text-5xl md:text-6xl font-bold leading-tight">
-                Built to Last:<br/>
-                <span class="text-yellow-300">Quality as Strategy in Manufacturing</span>
+                Stop Fighting Fires.<br/>
+                <span class="text-yellow-300">Start Preventing Them.</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-                A pragmatic blueprint for moving quality from the margins to the core of your strategy—complete with tools, templates, and real-world playbooks from aerospace and defense.
+                After 20 years in manufacturing quality, I got tired of watching the same preventable failures destroy companies. This book is the blueprint I wish I'd had on day one—proven frameworks, real tools, no consultant BS.
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center pt-4">
                 <button onclick="scrollToWaitlist()" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition">
                     Pre-Order Now - March 1st Launch →
                 </button>
-                <a href="#tools" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition">
-                    Access Free Tools
+                <a href="tools.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition">
+                    Get Free Quality Tools
                 </a>
             </div>
-            <p class="text-yellow-200 font-semibold">📚 Publishing March 1, 2025 • Join 500+ on the Waitlist</p>
+            <p class="text-yellow-200 font-semibold">📚 Publishing March 1, 2026 • Join 500+ on the Waitlist</p>
+        </div>
+    </div>
+</section>
+
+<!-- Problem Statement -->
+<section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Sound Familiar?
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6 text-left">
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                <p class="text-gray-700">❌ Quality positioned as the "bad guy" who slows everything down</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                <p class="text-gray-700">❌ Reactive firefighting becomes your culture</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                <p class="text-gray-700">❌ Same failures repeating because nobody has time to fix root causes</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                <p class="text-gray-700">❌ Cutting corners today that become recalls tomorrow</p>
+            </div>
+        </div>
+        <div class="mt-8 bg-green-50 border-2 border-green-500 p-6 rounded-lg">
+            <p class="text-xl font-semibold text-gray-900">There's a better way. <span class="text-green-700">Build quality IN, don't inspect it OUT.</span></p>
         </div>
     </div>
 </section>
 
 <!-- Value Props -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center space-y-3 p-6">
-                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold">For Every Role</h3>
-                <p class="text-gray-600">From technicians who stop the line to CEOs allocating capital—practical guidance for your role.</p>
-            </div>
-            <div class="text-center space-y-3 p-6">
-                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold">Proven ROI</h3>
-                <p class="text-gray-600">Real case studies showing how prevention investments deliver 10:1 returns through reduced COPQ.</p>
-            </div>
-            <div class="text-center space-y-3 p-6">
-                <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold">Battle-Tested Tools</h3>
-                <p class="text-gray-600">Download ready-to-use templates and calculators validated in high-stakes aerospace environments.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- What You'll Learn -->
 <section class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
     <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">What You'll Learn</h2>
-        <div class="grid md:grid-cols-2 gap-8">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">What Makes This Different</h2>
+        <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
-                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
-                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    Strategic Frameworks
-                </h3>
-                <ul class="space-y-2 text-gray-700">
-                    <li>• The 1:10:100 Rule and lifecycle cost modeling</li>
-                    <li>• Quality P&L design and COPQ visibility</li>
-                    <li>• Prevention Fund governance and ROI tracking</li>
-                </ul>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Written by a Practitioner</h3>
+                <p class="text-gray-600">Not an academic or consultant. I've lived these problems at Fortune 500 defense contractors AND 10-person family shops. I know what actually works in real constraints.</p>
             </div>
             <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
-                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
-                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    Operational Playbooks
-                </h3>
-                <ul class="space-y-2 text-gray-700">
-                    <li>• APQP/DFMEA/PFMEA implementation</li>
-                    <li>• Supplier qualification and development</li>
-                    <li>• Andon systems and psychological safety</li>
-                </ul>
-            </div>
-            <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
-                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
-                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    Cultural Design
-                </h3>
-                <ul class="space-y-2 text-gray-700">
-                    <li>• Building blameless incident response</li>
-                    <li>• Decision rights and governance architecture</li>
-                    <li>• Incentive alignment across functions</li>
-                </ul>
-            </div>
-            <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
-                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
-                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    Sustainability
-                </h3>
-                <ul class="space-y-2 text-gray-700">
-                    <li>• Talent systems and career paths</li>
-                    <li>• Knowledge transfer and succession</li>
-                    <li>• Measurement and continuous improvement</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Free Tools Section - UPDATED WITH ALL 10 TOOLS -->
-<section id="tools" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">10 Professional Quality Tools</h2>
-            <p class="text-xl text-gray-600 mb-2">Battle-tested templates and calculators - FREE to use now</p>
-            <p class="text-sm text-gray-500">✨ All tools are live and ready to use!</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Tool 1: COPQ Calculator -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-blue-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">Financial</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">COPQ Calculator</h3>
-                <p class="text-sm text-gray-600 mb-4">Calculate Cost of Poor Quality across all categories</p>
-                <a href="copq-calculator.html" target="_blank" class="block w-full bg-blue-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-blue-700">
-                    Launch Tool →
-                </a>
-            </div>
-
-            <!-- Tool 2: Cp/Cpk Calculator -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-green-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">Statistical</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">Cp/Cpk Calculator</h3>
-                <p class="text-sm text-gray-600 mb-4">Process capability analysis and interpretation</p>
-                <a href="cpk-calculator.html" target="_blank" class="block w-full bg-green-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-green-700">
-                    Launch Tool →
-                </a>
-            </div>
-
-            <!-- Tool 3: DFMEA Template -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-purple-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-purple-600 bg-purple-50 px-2 py-1 rounded">Design</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">DFMEA Template</h3>
-                <p class="text-sm text-gray-600 mb-4">Design Failure Mode and Effects Analysis</p>
-                <a href="dfmea-template.html" target="_blank" class="block w-full bg-purple-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-purple-700">
-                    Launch Tool →
-                </a>
-            </div>
-
-            <!-- Tool 4: PFMEA Template -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-orange-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-orange-600 bg-orange-50 px-2 py-1 rounded">Process</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">PFMEA Template</h3>
-                <p class="text-sm text-gray-600 mb-4">Process Failure Mode and Effects Analysis</p>
-                <a href="pfmea-template.html" target="_blank" class="block w-full bg-orange-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-orange-700">
-                    Launch Tool →
-                </a>
-            </div>
-
-            <!-- Tool 5: MSA Gage R&R -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-teal-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded">Measurement</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">MSA Gage R&R</h3>
-                <p class="text-sm text-gray-600 mb-4">Measurement System Analysis calculator</p>
-                <a href="msa-gage-rr.html" target="_blank" class="block w-full bg-teal-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-teal-700">
-                    Launch Tool →
-                </a>
-            </div>
-
-            <!-- Tool 6: AS9102C FAI -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-indigo-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Aerospace</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">AS9102C FAI Tool</h3>
-                <p class="text-sm text-gray-600 mb-4">First Article Inspection documentation</p>
-                <a href="as9102c-fai.html" target="_blank" class="block w-full bg-indigo-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-indigo-700">
-                    Launch Tool →
-                </a>
-            </div>
-
-            <!-- Tool 7: IQ/OQ/PQ Suite -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-pink-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
-                <span class="text-xs font-semibold text-pink-600 bg-pink-50 px-2 py-1 rounded">Validation</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">IQ/OQ/PQ Suite</h3>
-                <p class="text-sm text-gray-600 mb-4">Equipment qualification validation tool</p>
-                <a href="iq-oq-pq-suite.html" target="_blank" class="block w-full bg-pink-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-pink-700">
-                    Launch Tool →
-                </a>
+                <h3 class="text-xl font-bold mb-3">Battle-Tested Frameworks</h3>
+                <p class="text-gray-600">DFMEA, PFMEA, CAPA, COPQ, supplier management—proven methodologies translated from consultant-speak into practical guidance you can use Monday morning.</p>
             </div>
-
-            <!-- Tool 8: PPAP Package -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-red-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
+                <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                     </svg>
                 </div>
-                <span class="text-xs font-semibold text-red-600 bg-red-50 px-2 py-1 rounded">Automotive</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">PPAP Package</h3>
-                <p class="text-sm text-gray-600 mb-4">Production Part Approval Process generator</p>
-                <a href="ppap-package.html" target="_blank" class="block w-full bg-red-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-red-700">
-                    Launch Tool →
-                </a>
+                <h3 class="text-xl font-bold mb-3">Ready-to-Use Tools</h3>
+                <p class="text-gray-600">10 downloadable templates, calculators, and checklists validated in high-stakes aerospace environments. Start getting value before you finish reading.</p>
             </div>
-
-            <!-- Tool 9: CAPA Tracker -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-yellow-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-yellow-600 bg-yellow-50 px-2 py-1 rounded">Quality System</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">CAPA Tracker</h3>
-                <p class="text-sm text-gray-600 mb-4">Corrective & Preventive Action management</p>
-                <a href="capa-tracker.html" target="_blank" class="block w-full bg-yellow-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-yellow-700">
-                    Launch Tool →
-                </a>
-            </div>
-
-            <!-- Tool 10: QMS Audit Checklist -->
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="bg-cyan-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-                <span class="text-xs font-semibold text-cyan-600 bg-cyan-50 px-2 py-1 rounded">Audit</span>
-                <h3 class="font-bold text-lg mt-3 mb-2">QMS Audit Checklist</h3>
-                <p class="text-sm text-gray-600 mb-4">Quality Management System audit tool</p>
-                <a href="qms-audit-checklist.html" target="_blank" class="block w-full bg-cyan-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-cyan-700">
-                    Launch Tool →
-                </a>
-            </div>
-        </div>
-
-        <div class="mt-12 bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-200 rounded-xl p-8 text-center">
-            <h3 class="font-bold text-2xl mb-3">📚 Want Advanced Features?</h3>
-            <p class="text-gray-700 mb-4">Pre-order the book and receive lifetime access to premium versions of all tools, including cloud save, collaboration features, video tutorials, and quarterly updates.</p>
-            <button onclick="scrollToWaitlist()" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700">
-                Pre-Order Now - Get Premium Access
-            </button>
         </div>
     </div>
 </section>
 
-<!-- Chapters Section -->
-<section id="chapters" class="py-16 bg-gray-50">
+<!-- Who This Is For -->
+<section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">11 Chapters, One Transformation</h2>
-            <p class="text-xl text-gray-600">Each chapter combines strategic insight with tactical implementation</p>
-        </div>
-
-        <div class="space-y-4">
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="flex items-start gap-4">
-                    <div class="bg-blue-600 text-white font-bold text-xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">1</div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">The Iceberg: Seeing the True Cost of Poor Quality</h3>
-                        <p class="text-gray-600">Learn to quantify hidden costs and create the Quality P&L that makes prevention investments rational.</p>
-                    </div>
-                </div>
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Who This Book Is For</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="text-center p-6 bg-gray-50 rounded-xl">
+                <div class="text-4xl mb-3">👔</div>
+                <h3 class="font-bold text-lg mb-2">Quality Managers</h3>
+                <p class="text-sm text-gray-600">Tired of being the "bad guy" who slows everything down</p>
             </div>
-
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="flex items-start gap-4">
-                    <div class="bg-blue-600 text-white font-bold text-xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">2</div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">The Lever: Why a Dollar of Prevention Is Worth a Hundred Dollars of Cure</h3>
-                        <p class="text-gray-600">Master lifecycle cost modeling and prevention prioritization frameworks that prove 10:1 returns.</p>
-                    </div>
-                </div>
+            <div class="text-center p-6 bg-gray-50 rounded-xl">
+                <div class="text-4xl mb-3">⚙️</div>
+                <h3 class="font-bold text-lg mb-2">Operations Leaders</h3>
+                <p class="text-sm text-gray-600">Who want to stop firefighting and start preventing</p>
             </div>
-
-            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 card-hover">
-                <div class="flex items-start gap-4">
-                    <div class="bg-blue-600 text-white font-bold text-xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">3</div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">The Architect: Why Quality Can't Be Delegated</h3>
-                        <p class="text-gray-600">Redesign organizational structure, decision rights, and incentives so quality is embedded—not delegated.</p>
-                    </div>
-                </div>
+            <div class="text-center p-6 bg-gray-50 rounded-xl">
+                <div class="text-4xl mb-3">📊</div>
+                <h3 class="font-bold text-lg mb-2">Manufacturing Executives</h3>
+                <p class="text-sm text-gray-600">Looking to make quality a strategic advantage</p>
             </div>
-
-            <div class="text-center mt-8">
-                <p class="text-gray-600 mb-4">+ 8 more comprehensive chapters covering supplier integration, APQP implementation, cultural design, and legacy building</p>
-                <button onclick="scrollToWaitlist()" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700">
-                    See All Chapters - Pre-Order Now
-                </button>
+            <div class="text-center p-6 bg-gray-50 rounded-xl">
+                <div class="text-4xl mb-3">🔧</div>
+                <h3 class="font-bold text-lg mb-2">Engineers</h3>
+                <p class="text-sm text-gray-600">Who want to build quality in from the start</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="py-16 bg-white">
+<!-- What You'll Get -->
+<section class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+    <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Inside the Book</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    The Real Cost of Poor Quality
+                </h3>
+                <p class="text-gray-600 text-sm">Learn to calculate COPQ and prove the ROI of prevention to your CFO</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    DFMEA & PFMEA Done Right
+                </h3>
+                <p class="text-gray-600 text-sm">Stop checking boxes. Start preventing failures before they happen</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Supplier Quality That Actually Works
+                </h3>
+                <p class="text-gray-600 text-sm">Turn your supply chain from liability into competitive advantage</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    CAPA Systems That Close the Loop
+                </h3>
+                <p class="text-gray-600 text-sm">Stop repeating the same failures. Fix root causes, not symptoms</p>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <a href="chapters.html" class="text-blue-600 font-semibold hover:text-blue-800">View Full Chapter Breakdown →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof -->
+<section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-8 rounded-r-xl">
+            <p class="text-lg text-gray-700 italic mb-4">
+                "I've spent 20+ years implementing these frameworks at companies ranging from 10 employees to 10,000+. This isn't theory—it's what actually works when you don't have unlimited budget or time."
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <div class="text-left">
+                    <p class="font-bold text-gray-900">Chad Diggs</p>
+                    <p class="text-sm text-gray-600">AS9100 Lead Auditor • Six Sigma Green Belt</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
+            <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>20+ years experience</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Fortune 500 & Small Shop experience</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Aerospace & Defense background</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA / Waitlist Section -->
+<section id="waitlist" class="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
     <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-8">About the Book</h2>
-        
-        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 space-y-6">
-            <h3 class="text-2xl font-bold">Why This Book Exists</h3>
-            <p class="text-gray-700 leading-relaxed">
-                Manufacturing complexity scales faster than attention. A single overlooked process change, supplier shortcut, or unverified measurement can cascade into program delays, warranty charges, and reputational damage. Yet the reverse is also true: when prevention, supplier integration, and learning become the operating system, reliability compounds into margin, market preference, and resilience.
+        <div class="text-center space-y-6 mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold">Reserve Your Copy Today</h2>
+            <p class="text-xl text-blue-100">
+                Join 500+ quality professionals who are done fighting fires and ready to start preventing them.
             </p>
-            <p class="text-gray-700 leading-relaxed">
-                <em>Built to Last</em> is written for every person who touches manufacturing—from the technician who stops the line to the CEO who decides where to invest scarce capital. It offers a pragmatic, experience-driven blueprint for moving quality off the margins and into strategy.
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-4 mt-8">
-                <div class="bg-white rounded-lg p-4">
-                    <strong class="block mb-2">CEOs & Presidents</strong>
-                    <p class="text-sm text-gray-700">Learn how to protect prevention budgets, design incentives, and measure the Quality Dividend.</p>
-                </div>
-                <div class="bg-white rounded-lg p-4">
-                    <strong class="block mb-2">Quality Leaders</strong>
-                    <p class="text-sm text-gray-700">Get playbooks for CAPA governance, supplier development, and organizational design.</p>
-                </div>
-                <div class="bg-white rounded-lg p-4">
-                    <strong class="block mb-2">Operations Managers</strong>
-                    <p class="text-sm text-gray-700">Implement Andon systems, control plans, and human factors that reduce escapes.</p>
-                </div>
-                <div class="bg-white rounded-lg p-4">
-                    <strong class="block mb-2">Engineering Leaders</strong>
-                    <p class="text-sm text-gray-700">Master DFMEA, validation strategy, and design-for-manufacturability frameworks.</p>
-                </div>
-            </div>
         </div>
-    </div>
-</section>
 
-<!-- Waitlist Section -->
-<section id="waitlist" class="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold mb-4">Join 500+ Manufacturing Leaders</h2>
-        <p class="text-xl mb-8">Pre-order now and get exclusive bonuses worth $497</p>
-        
-        <div class="bg-white rounded-xl p-8 text-gray-900">
-            <h3 class="text-2xl font-bold mb-6">Pre-Order Benefits</h3>
-            <div class="space-y-3 text-left mb-8">
-                <div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span><strong>Lifetime Access</strong> to all 10+ professional quality tools</span>
-                </div>
-                <div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span><strong>Video Tutorials</strong> for each tool (3-5 min each)</span>
-                </div>
-                <div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span><strong>Quarterly Updates</strong> with new templates and tools</span>
-                </div>
-                <div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span><strong>Early Access</strong> - Get the book before March 1st launch</span>
-                </div>
-                <div class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span><strong>Private Community</strong> access with author Q&A</span>
+        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-2xl mx-auto">
+            <div class="space-y-6 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 text-center">Pre-Order "Built to Last"</h3>
+                <p class="text-gray-600 text-center">Get instant access to exclusive bonuses when you pre-order:</p>
+                
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-700"><strong>10 Free Quality Tools</strong> - Excel templates, calculators, and checklists</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-700"><strong>Early access</strong> to DIQ software platform (coming 2027)</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-700"><strong>Private community access</strong> with author Q&A sessions</span>
+                    </div>
                 </div>
             </div>
 
@@ -542,7 +389,7 @@
                         </div>
                         <div class="optionalParent">
                             <div class="clear foot">
-                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join Waitlist - Reserve Your Copy">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Pre-Order Now - March 1st Launch">
                             </div>
                         </div>
                     </div>
@@ -559,7 +406,7 @@
                 var $mcj = jQuery.noConflict(true);
             </script>
             
-            <p class="text-sm text-gray-500 mt-4">🔒 We respect your privacy. Unsubscribe anytime.</p>
+            <p class="text-sm text-gray-500 mt-4 text-center">🔒 We respect your privacy. Unsubscribe anytime.</p>
         </div>
     </div>
 </section>
@@ -567,23 +414,29 @@
 <!-- Footer -->
 <footer class="bg-gray-900 text-gray-300 py-12">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-4 gap-8">
             <div>
                 <h3 class="font-bold text-white text-lg mb-4">Built to Last</h3>
-                <p class="text-sm">Quality as strategy in manufacturing - A practical blueprint for sustainable excellence.</p>
+                <p class="text-sm">Making quality the strategic advantage, not the "bad guy."</p>
             </div>
             <div>
-                <h3 class="font-bold text-white text-lg mb-4">Quick Links</h3>
+                <h3 class="font-bold text-white text-lg mb-4">Book</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="#home" class="hover:text-white">Home</a></li>
-                    <li><a href="#chapters" class="hover:text-white">Chapters</a></li>
-                    <li><a href="#tools" class="hover:text-white">Free Tools</a></li>
-                    <li><a href="#about" class="hover:text-white">About</a></li>
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="chapters.html" class="hover:text-white">Chapters</a></li>
+                    <li><a href="about.html" class="hover:text-white">About the Author</a></li>
                 </ul>
             </div>
             <div>
-                <h3 class="font-bold text-white text-lg mb-4">Contact</h3>
-                <p class="text-sm">Questions about the book?<br/>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9d0d7dfd6f9ddd0ded78bc8ccd8d5d0cdc097dad6d4">[email&#160;protected]</a></p>
+                <h3 class="font-bold text-white text-lg mb-4">Resources</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="tools.html" class="hover:text-white">Free Quality Tools</a></li>
+                    <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-white text-lg mb-4">Connect</h3>
+                <p class="text-sm">Questions about the book?<br/>Email: <a href="mailto:chad@dign2quality.com" class="hover:text-white">chad@dign2quality.com</a></p>
             </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
@@ -593,6 +446,28 @@
 </footer>
 
 <script>
+    // Countdown Timer
+    function updateCountdown() {
+        const launchDate = new Date('2026-03-01T00:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+
+        if (distance < 0) {
+            document.getElementById('countdown').innerHTML = '<p class="text-2xl font-bold">NOW AVAILABLE!</p>';
+        }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000); // Update every minute
+
     function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
         menu.classList.toggle('hidden');
@@ -602,7 +477,6 @@
         const waitlistSection = document.getElementById('waitlist');
         if (waitlistSection) {
             waitlistSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            // Focus on email input after scrolling
             setTimeout(function() {
                 const emailInput = document.getElementById('mce-EMAIL');
                 if (emailInput) {
@@ -613,4 +487,12 @@
     }
 
     // Close mobile menu when clicking a link
- 
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+    });
+</script>
+
+</body>
+</html>
