@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AS9102C First Article Inspection Tool | Dign2Quality</title>
-    <meta name="description" content="AS9102C FAI Documentation Tool - Free aerospace quality management tool">
+    <title>AS9102C First Article Inspection Report | Dign2Quality</title>
+    <meta name="description" content="AS9102C FAIR Documentation Tool - Free aerospace quality management tool">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -14,7 +14,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -30,6 +30,10 @@
             font-size: 2.5em;
             margin-bottom: 10px;
         }
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
@@ -37,6 +41,38 @@
             text-decoration: none;
             font-weight: 600;
         }
+        .back-link:hover { text-decoration: underline; }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab:hover { color: #667eea; }
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
         .form-section {
             background: #f8f9fa;
             padding: 25px;
@@ -48,12 +84,30 @@
             margin-bottom: 20px;
             border-bottom: 2px solid #667eea;
             padding-bottom: 10px;
+            font-size: 1.3em;
         }
+        .form-section h3 {
+            color: #555;
+            margin: 20px 0 15px 0;
+            font-size: 1.1em;
+        }
+        
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .form-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
         .input-group {
             margin-bottom: 15px;
         }
@@ -62,6 +116,7 @@
             color: #555;
             margin-bottom: 8px;
             font-weight: 500;
+            font-size: 0.9em;
         }
         .input-group input, .input-group select, .input-group textarea {
             width: 100%;
@@ -74,6 +129,33 @@
             outline: none;
             border-color: #667eea;
         }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
         .btn {
             padding: 12px 24px;
             border: none;
@@ -81,8 +163,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s;
-            margin-right: 10px;
-            margin-top: 10px;
         }
         .btn:hover { transform: translateY(-2px); }
         .btn-primary {
@@ -93,6 +173,15 @@
             background: #e0e0e0;
             color: #333;
         }
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
         .table-container {
             overflow-x: auto;
             margin-top: 20px;
@@ -101,230 +190,523 @@
             width: 100%;
             border-collapse: collapse;
             background: white;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
         th {
             background: #667eea;
             color: white;
-            padding: 12px;
+            padding: 10px 8px;
             text-align: left;
             font-weight: 600;
+            font-size: 0.85em;
+            position: sticky;
+            top: 0;
         }
         td {
-            padding: 12px;
+            padding: 10px 8px;
             border: 1px solid #ddd;
+        }
+        td input, td select, td textarea {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95em;
         }
         tr:nth-child(even) {
             background: #f8f9fa;
         }
-        .status-pass { background: #d4edda; color: #155724; font-weight: bold; }
-        .status-fail { background: #f8d7da; color: #721c24; font-weight: bold; }
-        .controls {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .info-box strong {
+            color: #667eea;
+        }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .back-link, .tabs, .controls, .btn { display: none; }
+            .container { box-shadow: none; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← Back to Home</a>
+        <a href="../index.html" class="back-link">← Back to Home</a>
         
         <div class="header">
-            <h1>✈️ AS9102C FAI Tool</h1>
-            <p>First Article Inspection Documentation</p>
+            <h1>✈️ AS9102C FAIR</h1>
+            <p class="subtitle">First Article Inspection Report</p>
         </div>
         
-        <div class="form-section">
-            <h2>Form 1: Part Number Accountability</h2>
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>Part Number</label>
-                    <input type="text" id="partNumber" placeholder="Enter part number">
+        <div class="info-box">
+            <strong>AS9102C Revision C Compliant</strong> - This tool follows the official AS9102C format with Form 1 (Part Number Accountability), Form 2 (Product Accountability), and Form 3 (Characteristic Accountability).
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('form1')">Form 1: Part Number Accountability</button>
+            <button class="tab" onclick="showTab('form2')">Form 2: Product Accountability</button>
+            <button class="tab" onclick="showTab('form3')">Form 3: Characteristic Accountability</button>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-primary" onclick="exportAllForms()">📥 Export Complete FAIR Package (CSV)</button>
+            <button class="btn btn-secondary" onclick="window.print()">🖨️ Print FAIR</button>
+            <button class="btn btn-secondary" onclick="clearAllForms()">🗑️ Clear All Forms</button>
+        </div>
+        
+        <!-- FORM 1: Part Number Accountability -->
+        <div id="form1" class="tab-content active">
+            <div class="form-section">
+                <h2>Form 1: Part Number Accountability</h2>
+                
+                <div class="form-grid-4">
+                    <div class="input-group">
+                        <label>1. Part Number *</label>
+                        <input type="text" id="f1_partNumber" placeholder="Enter part number">
+                    </div>
+                    <div class="input-group">
+                        <label>2. Part Name *</label>
+                        <input type="text" id="f1_partName" placeholder="Enter part name">
+                    </div>
+                    <div class="input-group">
+                        <label>3. Serial Number / Date Code</label>
+                        <input type="text" id="f1_serialNumber" placeholder="Serial or date code">
+                    </div>
+                    <div class="input-group">
+                        <label>4. FAIR Identifier</label>
+                        <input type="text" id="f1_fairId" placeholder="FAIR ID">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>Part Name/Description</label>
-                    <input type="text" id="partName" placeholder="Enter part description">
+                
+                <div class="form-grid-4">
+                    <div class="input-group">
+                        <label>5. Part Revision Level</label>
+                        <input type="text" id="f1_partRev" placeholder="Rev level">
+                    </div>
+                    <div class="input-group">
+                        <label>6. Drawing Number</label>
+                        <input type="text" id="f1_drawingNumber" placeholder="Drawing number">
+                    </div>
+                    <div class="input-group">
+                        <label>7. Drawing Revision Level</label>
+                        <input type="text" id="f1_drawingRev" placeholder="Drawing rev">
+                    </div>
+                    <div class="input-group">
+                        <label>8. Additional Changes</label>
+                        <input type="text" id="f1_additionalChanges" placeholder="Changes">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>Manufacturer Name</label>
-                    <input type="text" id="manufacturer" placeholder="Enter manufacturer">
+                
+                <div class="form-grid-4">
+                    <div class="input-group">
+                        <label>9. Manufacturing Process Reference</label>
+                        <input type="text" id="f1_mfgProcessRef" placeholder="Process ref">
+                    </div>
+                    <div class="input-group">
+                        <label>10. Organization Name</label>
+                        <input type="text" id="f1_orgName" placeholder="Organization">
+                    </div>
+                    <div class="input-group">
+                        <label>11. Supplier Code</label>
+                        <input type="text" id="f1_supplierCode" placeholder="Supplier code">
+                    </div>
+                    <div class="input-group">
+                        <label>12. P.O. Number</label>
+                        <input type="text" id="f1_poNumber" placeholder="PO number">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>Manufacturer Code</label>
-                    <input type="text" id="mfgCode" placeholder="Enter code">
+                
+                <h3>13. Detail FAI / 14. FAI Type</h3>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="f1_detailFAI" onchange="updateFAIType()">
+                        Detail FAI
+                    </label>
+                    <label>
+                        <input type="checkbox" id="f1_assemblyFAI" onchange="updateFAIType()">
+                        Assembly FAI
+                    </label>
                 </div>
-                <div class="input-group">
-                    <label>PO Number</label>
-                    <input type="text" id="poNumber" placeholder="Enter PO number">
+                
+                <div class="checkbox-group">
+                    <label>
+                        <input type="radio" name="fairType" value="full" id="f1_fullFAI">
+                        Full FAI
+                    </label>
+                    <label>
+                        <input type="radio" name="fairType" value="partial" id="f1_partialFAI">
+                        Partial FAI
+                    </label>
                 </div>
-                <div class="input-group">
-                    <label>Serial/Lot Number</label>
-                    <input type="text" id="serialNumber" placeholder="Enter serial/lot">
-                </div>
-                <div class="input-group">
-                    <label>Inspector Name</label>
-                    <input type="text" id="inspector" placeholder="Enter inspector name">
-                </div>
-                <div class="input-group">
-                    <label>Inspection Date</label>
-                    <input type="date" id="inspectionDate">
+                
+                <h3>INDEX (For Assembly FAI Only)</h3>
+                <p style="color:#666; font-size:0.9em; margin-bottom:15px;">
+                    If this is an assembly, list all component part numbers below. If detail part only, proceed to Form 2.
+                </p>
+                
+                <button class="btn btn-primary" onclick="addIndexRow()">+ Add Component Part</button>
+                
+                <div class="table-container">
+                    <table id="indexTable">
+                        <thead>
+                            <tr>
+                                <th>15. Part Number</th>
+                                <th>16. Part Name</th>
+                                <th>17. Part Type</th>
+                                <th>18. FAI Identifier</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="indexBody">
+                            <!-- Rows added dynamically -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
         
-        <div class="form-section">
-            <h2>Form 2: Product Accountability</h2>
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>Drawing Number</label>
-                    <input type="text" id="drawingNumber" placeholder="Enter drawing number">
+        <!-- FORM 2: Product Accountability -->
+        <div id="form2" class="tab-content">
+            <div class="form-section">
+                <h2>Form 2: Product Accountability - Materials, Special Processes, and Functional Testing</h2>
+                
+                <div class="form-grid-4">
+                    <div class="input-group">
+                        <label>1. Part Number</label>
+                        <input type="text" id="f2_partNumber" readonly style="background:#f0f0f0;">
+                    </div>
+                    <div class="input-group">
+                        <label>2. Part Name</label>
+                        <input type="text" id="f2_partName" readonly style="background:#f0f0f0;">
+                    </div>
+                    <div class="input-group">
+                        <label>3. Serial Number/Date Code</label>
+                        <input type="text" id="f2_serialNumber" readonly style="background:#f0f0f0;">
+                    </div>
+                    <div class="input-group">
+                        <label>4. FAIR Identifier</label>
+                        <input type="text" id="f2_fairId" readonly style="background:#f0f0f0;">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>Drawing Revision</label>
-                    <input type="text" id="drawingRev" placeholder="Enter revision">
+                
+                <h3>Materials & Special Processes</h3>
+                <button class="btn btn-primary" onclick="addMaterialRow()">+ Add Material/Process</button>
+                
+                <div class="table-container">
+                    <table id="materialTable">
+                        <thead>
+                            <tr>
+                                <th>5. Material or Process Name</th>
+                                <th>6. Specification Number</th>
+                                <th>7. Code</th>
+                                <th>8. Supplier</th>
+                                <th>9. Customer Approval Verification</th>
+                                <th>10. Certificate of Conformance Number</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="materialBody">
+                            <!-- Rows added dynamically -->
+                        </tbody>
+                    </table>
                 </div>
-                <div class="input-group">
-                    <label>Specification</label>
-                    <input type="text" id="specification" placeholder="Enter specification">
-                </div>
-                <div class="input-group">
-                    <label>Customer</label>
-                    <input type="text" id="customer" placeholder="Enter customer name">
+                
+                <h3>Functional Testing</h3>
+                <div class="form-grid-2">
+                    <div class="input-group">
+                        <label>11. Functional Test Procedure Number</label>
+                        <input type="text" id="f2_testProcedure" placeholder="Test procedure number">
+                    </div>
+                    <div class="input-group">
+                        <label>12. Acceptance Report Number</label>
+                        <input type="text" id="f2_acceptanceReport" placeholder="Report number">
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="form-section">
-            <h2>Form 3: Characteristic Accountability</h2>
-            <div class="controls">
-                <button class="btn btn-primary" onclick="addCharacteristic()">+ Add Characteristic</button>
-                <button class="btn btn-secondary" onclick="exportFAI()">📥 Export to CSV</button>
-                <button class="btn btn-secondary" onclick="printFAI()">🖨️ Print FAI Report</button>
-            </div>
-            
-            <div class="table-container">
-                <table id="characteristicTable">
-                    <thead>
-                        <tr>
-                            <th>Item #</th>
-                            <th>Characteristic</th>
-                            <th>Specification</th>
-                            <th>Actual Result</th>
-                            <th>Method</th>
-                            <th>Status</th>
-                            <th>Comments</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="characteristicBody">
-                        <!-- Rows added dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="form-section">
-            <h2>Final Approval</h2>
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>Quality Engineer</label>
-                    <input type="text" id="qeApproval" placeholder="Enter QE name">
+        <!-- FORM 3: Characteristic Accountability -->
+        <div id="form3" class="tab-content">
+            <div class="form-section">
+                <h2>Form 3: Characteristic Accountability, Verification and Compatibility Evaluation</h2>
+                
+                <div class="form-grid-4">
+                    <div class="input-group">
+                        <label>1. Part Number</label>
+                        <input type="text" id="f3_partNumber" readonly style="background:#f0f0f0;">
+                    </div>
+                    <div class="input-group">
+                        <label>2. Part Name</label>
+                        <input type="text" id="f3_partName" readonly style="background:#f0f0f0;">
+                    </div>
+                    <div class="input-group">
+                        <label>3. Serial Number/Date Code</label>
+                        <input type="text" id="f3_serialNumber" readonly style="background:#f0f0f0;">
+                    </div>
+                    <div class="input-group">
+                        <label>4. FAIR Identifier</label>
+                        <input type="text" id="f3_fairId" readonly style="background:#f0f0f0;">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>Date</label>
-                    <input type="date" id="qeDate">
+                
+                <h3>Characteristic Accountability</h3>
+                <button class="btn btn-primary" onclick="addCharacteristicRow()">+ Add Characteristic</button>
+                <button class="btn btn-secondary" onclick="importFromDrawing()">📋 Import from Drawing (Coming Soon)</button>
+                
+                <div class="table-container">
+                    <table id="characteristicTable">
+                        <thead>
+                            <tr>
+                                <th>5. Char No.</th>
+                                <th>6. Reference Location</th>
+                                <th>7. Characteristic Designator</th>
+                                <th>8. Requirement</th>
+                                <th>9. Results*</th>
+                                <th>10. Designed/ Qualified Tooling</th>
+                                <th>11. Non-Conformance Number</th>
+                                <th>12a. FAI Inspection Measuring Equipment</th>
+                                <th>12b. Traceability of Inspection Measuring Equipment</th>
+                                <th>12c. Production Inspection Measuring Equipment</th>
+                                <th>12d. FAI Inspector Identification</th>
+                                <th>14. Comments</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="characteristicBody">
+                            <!-- Rows added dynamically -->
+                        </tbody>
+                    </table>
                 </div>
-                <div class="input-group">
-                    <label>Final Status</label>
-                    <select id="finalStatus">
-                        <option value="">Select status</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Approved with Comments">Approved with Comments</option>
-                        <option value="Rejected">Rejected</option>
-                    </select>
+                
+                <div class="info-box" style="margin-top:20px;">
+                    <strong>*Results Column:</strong> Enter actual measurement values. Use "Pass" or "Fail" for qualitative characteristics. Document all measurements with appropriate significant figures.
                 </div>
             </div>
         </div>
     </div>
     
     <script>
-        let charCount = 0;
+        let indexRowCount = 0;
+        let materialRowCount = 0;
+        let charRowCount = 0;
         
-        function addCharacteristic() {
-            charCount++;
-            const tbody = document.getElementById('characteristicBody');
-            const row = tbody.insertRow();
+        // Tab switching
+        function showTab(tabName) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
             
+            // Auto-populate Form 2 and Form 3 headers from Form 1
+            if (tabName === 'form2' || tabName === 'form3') {
+                syncFormHeaders();
+            }
+        }
+        
+        function syncFormHeaders() {
+            const partNum = document.getElementById('f1_partNumber').value;
+            const partName = document.getElementById('f1_partName').value;
+            const serial = document.getElementById('f1_serialNumber').value;
+            const fairId = document.getElementById('f1_fairId').value;
+            
+            // Update Form 2 headers
+            document.getElementById('f2_partNumber').value = partNum;
+            document.getElementById('f2_partName').value = partName;
+            document.getElementById('f2_serialNumber').value = serial;
+            document.getElementById('f2_fairId').value = fairId;
+            
+            // Update Form 3 headers
+            document.getElementById('f3_partNumber').value = partNum;
+            document.getElementById('f3_partName').value = partName;
+            document.getElementById('f3_serialNumber').value = serial;
+            document.getElementById('f3_fairId').value = fairId;
+        }
+        
+        function updateFAIType() {
+            // Logic to handle Detail vs Assembly FAI selection
+        }
+        
+        // Form 1: INDEX rows
+        function addIndexRow() {
+            indexRowCount++;
+            const tbody = document.getElementById('indexBody');
+            const row = tbody.insertRow();
             row.innerHTML = `
-                <td style="text-align:center;">${charCount}</td>
-                <td><input type="text" placeholder="e.g., Length" style="width:100%;"></td>
-                <td><input type="text" placeholder="e.g., 10.0 ± 0.1" style="width:100%;"></td>
-                <td><input type="text" placeholder="Measured value" style="width:100%;"></td>
-                <td>
-                    <select style="width:100%;">
-                        <option>CMM</option>
-                        <option>Caliper</option>
-                        <option>Micrometer</option>
-                        <option>Visual</option>
-                        <option>Other</option>
-                    </select>
-                </td>
-                <td>
-                    <select style="width:100%;" onchange="updateStatus(this)">
-                        <option value="">Select</option>
-                        <option value="Pass">Pass</option>
-                        <option value="Fail">Fail</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Comments" style="width:100%;"></td>
-                <td><button class="btn btn-secondary" onclick="this.closest('tr').remove()">Delete</button></td>
+                <td><input type="text" placeholder="Part number"></td>
+                <td><input type="text" placeholder="Part name"></td>
+                <td><select>
+                    <option value="">Select type</option>
+                    <option value="Detail">Detail Part</option>
+                    <option value="Sub-Assembly">Sub-Assembly</option>
+                    <option value="Purchased">Purchased Part</option>
+                </select></td>
+                <td><input type="text" placeholder="FAI ID"></td>
+                <td><button class="btn btn-danger btn-sm" onclick="this.closest('tr').remove()">Delete</button></td>
             `;
         }
         
-        function updateStatus(select) {
-            const cell = select.parentElement;
-            cell.className = select.value === 'Pass' ? 'status-pass' : 'status-fail';
+        // Form 2: Material/Process rows
+        function addMaterialRow() {
+            materialRowCount++;
+            const tbody = document.getElementById('materialBody');
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td><input type="text" placeholder="e.g., 6061-T6 Aluminum"></td>
+                <td><input type="text" placeholder="e.g., QQ-A-200/8"></td>
+                <td><input type="text" placeholder="Heat/Lot code"></td>
+                <td><input type="text" placeholder="Supplier name"></td>
+                <td><select>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="N/A">N/A</option>
+                </select></td>
+                <td><input type="text" placeholder="C of C number"></td>
+                <td><button class="btn btn-danger btn-sm" onclick="this.closest('tr').remove()">Delete</button></td>
+            `;
         }
         
-        function exportFAI() {
-            let csv = 'AS9102C First Article Inspection Report\n\n';
-            csv += 'Part Number:,' + document.getElementById('partNumber').value + '\n';
-            csv += 'Part Name:,' + document.getElementById('partName').value + '\n';
-            csv += 'Inspector:,' + document.getElementById('inspector').value + '\n';
-            csv += 'Date:,' + document.getElementById('inspectionDate').value + '\n\n';
-            
-            csv += 'Item,Characteristic,Specification,Actual,Method,Status,Comments\n';
-            
+        // Form 3: Characteristic rows
+        function addCharacteristicRow() {
+            charRowCount++;
+            const tbody = document.getElementById('characteristicBody');
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td style="text-align:center; font-weight:bold;">${charRowCount}</td>
+                <td><input type="text" placeholder="e.g., Detail A, View B"></td>
+                <td><input type="text" placeholder="e.g., Dimension, Note"></td>
+                <td><input type="text" placeholder="e.g., 10.0 ± 0.1"></td>
+                <td><input type="text" placeholder="Measured value"></td>
+                <td><select>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="N/A">N/A</option>
+                </select></td>
+                <td><input type="text" placeholder="NCR number"></td>
+                <td><input type="text" placeholder="Equipment ID"></td>
+                <td><input type="text" placeholder="Cal cert #"></td>
+                <td><input type="text" placeholder="Equipment ID"></td>
+                <td><input type="text" placeholder="Inspector stamp"></td>
+                <td><textarea rows="2" placeholder="Comments"></textarea></td>
+                <td><button class="btn btn-danger btn-sm" onclick="this.closest('tr').remove(); renumberCharacteristics()">Delete</button></td>
+            `;
+        }
+        
+        function renumberCharacteristics() {
             const rows = document.querySelectorAll('#characteristicBody tr');
-            rows.forEach(row => {
+            rows.forEach((row, index) => {
+                row.cells[0].textContent = index + 1;
+            });
+            charRowCount = rows.length;
+        }
+        
+        function importFromDrawing() {
+            alert('Drawing import feature coming soon! For now, manually add characteristics using the "+ Add Characteristic" button.');
+        }
+        
+        function exportAllForms() {
+            let csv = 'AS9102C First Article Inspection Report\n\n';
+            
+            // Form 1 data
+            csv += '=== FORM 1: PART NUMBER ACCOUNTABILITY ===\n';
+            csv += `1. Part Number:,${document.getElementById('f1_partNumber').value}\n`;
+            csv += `2. Part Name:,${document.getElementById('f1_partName').value}\n`;
+            csv += `3. Serial Number/Date Code:,${document.getElementById('f1_serialNumber').value}\n`;
+            csv += `4. FAIR Identifier:,${document.getElementById('f1_fairId').value}\n`;
+            csv += `5. Part Revision Level:,${document.getElementById('f1_partRev').value}\n`;
+            csv += `6. Drawing Number:,${document.getElementById('f1_drawingNumber').value}\n`;
+            csv += `7. Drawing Revision Level:,${document.getElementById('f1_drawingRev').value}\n`;
+            csv += `8. Additional Changes:,${document.getElementById('f1_additionalChanges').value}\n`;
+            csv += `9. Manufacturing Process Reference:,${document.getElementById('f1_mfgProcessRef').value}\n`;
+            csv += `10. Organization Name:,${document.getElementById('f1_orgName').value}\n`;
+            csv += `11. Supplier Code:,${document.getElementById('f1_supplierCode').value}\n`;
+            csv += `12. P.O. Number:,${document.getElementById('f1_poNumber').value}\n`;
+            csv += `13. Detail FAI:,${document.getElementById('f1_detailFAI').checked ? 'Yes' : 'No'}\n`;
+            csv += `14. Assembly FAI:,${document.getElementById('f1_assemblyFAI').checked ? 'Yes' : 'No'}\n`;
+            csv += `FAI Type:,${document.querySelector('input[name="fairType"]:checked')?.value || 'Not specified'}\n`;
+            
+            // INDEX table
+            csv += '\nINDEX (Assembly Components):\n';
+            csv += 'Part Number,Part Name,Part Type,FAI Identifier\n';
+            document.querySelectorAll('#indexBody tr').forEach(row => {
+                const cells = row.cells;
+                csv += `"${cells[0].querySelector('input').value}",`;
+                csv += `"${cells[1].querySelector('input').value}",`;
+                csv += `"${cells[2].querySelector('select').value}",`;
+                csv += `"${cells[3].querySelector('input').value}"\n`;
+            });
+            
+            // Form 2 data
+            csv += '\n=== FORM 2: PRODUCT ACCOUNTABILITY ===\n';
+            csv += 'Material/Process Name,Specification Number,Code,Supplier,Customer Approval,Certificate of Conformance\n';
+            document.querySelectorAll('#materialBody tr').forEach(row => {
+                const cells = row.cells;
+                csv += `"${cells[0].querySelector('input').value}",`;
+                csv += `"${cells[1].querySelector('input').value}",`;
+                csv += `"${cells[2].querySelector('input').value}",`;
+                csv += `"${cells[3].querySelector('input').value}",`;
+                csv += `"${cells[4].querySelector('select').value}",`;
+                csv += `"${cells[5].querySelector('input').value}"\n`;
+            });
+            csv += `\nFunctional Test Procedure:,${document.getElementById('f2_testProcedure').value}\n`;
+            csv += `Acceptance Report Number:,${document.getElementById('f2_acceptanceReport').value}\n`;
+            
+            // Form 3 data
+            csv += '\n=== FORM 3: CHARACTERISTIC ACCOUNTABILITY ===\n';
+            csv += 'Char No.,Reference Location,Characteristic Designator,Requirement,Results,Designed/Qualified Tooling,Non-Conformance Number,FAI Inspection Equipment,Traceability,Production Equipment,Inspector ID,Comments\n';
+            document.querySelectorAll('#characteristicBody tr').forEach(row => {
                 const cells = row.cells;
                 csv += `${cells[0].textContent},`;
                 csv += `"${cells[1].querySelector('input').value}",`;
                 csv += `"${cells[2].querySelector('input').value}",`;
                 csv += `"${cells[3].querySelector('input').value}",`;
-                csv += `${cells[4].querySelector('select').value},`;
-                csv += `${cells[5].querySelector('select').value},`;
-                csv += `"${cells[6].querySelector('input').value}"\n`;
+                csv += `"${cells[4].querySelector('input').value}",`;
+                csv += `"${cells[5].querySelector('select').value}",`;
+                csv += `"${cells[6].querySelector('input').value}",`;
+                csv += `"${cells[7].querySelector('input').value}",`;
+                csv += `"${cells[8].querySelector('input').value}",`;
+                csv += `"${cells[9].querySelector('input').value}",`;
+                csv += `"${cells[10].querySelector('input').value}",`;
+                csv += `"${cells[11].querySelector('textarea').value}"\n`;
             });
             
+            // Create download
             const blob = new Blob([csv], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `FAI_${document.getElementById('partNumber').value}_${new Date().toISOString().split('T')[0]}.csv`;
+            const partNum = document.getElementById('f1_partNumber').value || 'FAIR';
+            a.download = `AS9102C_FAIR_${partNum}_${new Date().toISOString().split('T')[0]}.csv`;
             a.click();
         }
         
-        function printFAI() {
-            window.print();
+        function clearAllForms() {
+            if (confirm('Are you sure you want to clear all forms? This cannot be undone.')) {
+                document.querySelectorAll('input[type="text"], textarea').forEach(el => el.value = '');
+                document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => el.checked = false);
+                document.getElementById('indexBody').innerHTML = '';
+                document.getElementById('materialBody').innerHTML = '';
+                document.getElementById('characteristicBody').innerHTML = '';
+                indexRowCount = 0;
+                materialRowCount = 0;
+                charRowCount = 0;
+            }
         }
         
-        // Add initial characteristics
-        addCharacteristic();
-        addCharacteristic();
-        addCharacteristic();
+        // Add a few default rows for convenience
+        window.addEventListener('load', function() {
+            addMaterialRow();
+            addCharacteristicRow();
+            addCharacteristicRow();
+            addCharacteristicRow();
+        });
     </script>
 </body>
 </html>
