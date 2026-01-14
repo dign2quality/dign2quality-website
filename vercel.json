@@ -1,14 +1,1 @@
-{
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "routes": [
-    {
-      "src": "/tools/(.*)\\.html",
-      "dest": "/tools/$1.html"
-    },
-    {
-      "src": "/tools/(.*)",
-      "dest": "/tools/$1.html"
-    }
-  ]
-}
+{}
