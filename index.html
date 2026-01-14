@@ -337,159 +337,54 @@
                 #mc_embed_signup form { padding: 0 !important; }
                 #mc_embed_signup h2 { display: none !important; }
                 #mc_embed_signup .indicates-required { display: none !important; }
-                
-                #mc_embed_signup .mc-field-group { 
-                    padding-bottom: 0 !important; 
-                    margin-bottom: 1.5rem !important;
-                    width: 100% !important;
-                }
-                
-                #mc_embed_signup label { 
-                    display: block !important;
-                    text-align: left !important;
-                    font-weight: 600 !important;
-                    color: #374151 !important;
-                    margin-bottom: 0.5rem !important;
-                    font-size: 0.95rem !important;
-                }
-                
-                #mc_embed_signup input[type="email"],
-                #mc_embed_signup input[type="text"] { 
-                    width: 100% !important;
-                    padding: 0.875rem !important;
-                    font-size: 1rem !important;
-                    border: 2px solid #e5e7eb !important;
-                    border-radius: 0.5rem !important;
-                    background: white !important;
-                    transition: all 0.3s !important;
-                }
-                
-                #mc_embed_signup input[type="email"]:focus,
-                #mc_embed_signup input[type="text"]:focus { 
-                    outline: none !important;
-                    border-color: #3b82f6 !important;
-                    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
-                }
-                
-                #mc_embed_signup .button { 
-                    width: 100% !important;
-                    padding: 1rem !important;
-                    font-size: 1.125rem !important;
-                    font-weight: 700 !important;
-                    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
-                    color: white !important;
-                    border: none !important;
-                    border-radius: 0.75rem !important;
-                    cursor: pointer !important;
-                    transition: transform 0.2s, box-shadow 0.2s !important;
-                    margin-top: 0.5rem !important;
-                }
-                
-                #mc_embed_signup .button:hover { 
-                    transform: translateY(-2px) !important;
-                    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3) !important;
-                }
-                
+                #mc_embed_signup .mc-field-group { padding-bottom: 0 !important; margin-bottom: 1.5rem !important; width: 100% !important; }
+                #mc_embed_signup label { display: block !important; text-align: left !important; font-weight: 600 !important; color: #374151 !important; margin-bottom: 0.5rem !important; font-size: 0.95rem !important; }
+                #mc_embed_signup input[type="email"], #mc_embed_signup input[type="text"] { width: 100% !important; padding: 0.875rem !important; font-size: 1rem !important; border: 2px solid #e5e7eb !important; border-radius: 0.5rem !important; background: white !important; transition: all 0.3s !important; }
+                #mc_embed_signup input[type="email"]:focus, #mc_embed_signup input[type="text"]:focus { outline: none !important; border-color: #3b82f6 !important; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important; }
+                #mc_embed_signup .button { width: 100% !important; padding: 1rem !important; font-size: 1.125rem !important; font-weight: 700 !important; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important; color: white !important; border: none !important; border-radius: 0.75rem !important; cursor: pointer !important; transition: transform 0.2s, box-shadow 0.2s !important; margin-top: 0.5rem !important; }
+                #mc_embed_signup .button:hover { transform: translateY(-2px) !important; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3) !important; }
                 #mc_embed_signup .optionalParent { margin-top: 0 !important; }
                 #mc_embed_signup .foot { margin-top: 0 !important; padding: 0 !important; }
                 #mc_embed_signup .clear { clear: both !important; }
-                
-                #mc_embed_signup .response { 
-                    margin: 1rem 0 !important; 
-                    padding: 0.875rem !important; 
-                    border-radius: 0.5rem !important; 
-                    text-align: center !important; 
-                    font-weight: 600 !important;
-                    font-size: 0.95rem !important;
-                }
-                
-                #mce-success-response { 
-                    background: #d4edda !important; 
-                    color: #155724 !important; 
-                    border: 2px solid #c3e6cb !important;
-                }
-                
-                #mce-error-response { 
-                    background: #f8d7da !important; 
-                    color: #721c24 !important; 
-                    border: 2px solid #f5c6cb !important;
-                }
-                
-                /* Two-column layout for optional fields */
-                .two-column-fields {
-                    display: grid !important;
-                    grid-template-columns: 1fr 1fr !important;
-                    gap: 1.5rem !important;
-                    margin-bottom: 1.5rem !important;
-                }
-                
-                @media (max-width: 640px) {
-                    .two-column-fields {
-                        grid-template-columns: 1fr !important;
-                    }
-                }
-                
-                /* Optional label styling */
-                .optional-label::after {
-                    content: ' (optional)';
-                    font-weight: 400;
-                    color: #6b7280;
-                    font-size: 0.875rem;
-                }
+                #mc_embed_signup .response { margin: 1rem 0 !important; padding: 0.875rem !important; border-radius: 0.5rem !important; text-align: center !important; font-weight: 600 !important; font-size: 0.95rem !important; }
+                #mce-success-response { background: #d4edda !important; color: #155724 !important; border: 2px solid #c3e6cb !important; }
+                #mce-error-response { background: #f8d7da !important; color: #721c24 !important; border: 2px solid #f5c6cb !important; }
+                .two-column-fields { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1.5rem !important; margin-bottom: 1.5rem !important; }
+                @media (max-width: 640px) { .two-column-fields { grid-template-columns: 1fr !important; } }
+                .optional-label::after { content: ' (optional)'; font-weight: 400; color: #6b7280; font-size: 0.875rem; }
             </style>
-            
             <div id="mc_embed_signup">
-                <form action="https://dign2quality.us9.list-manage.com/subscribe/post?u=7a8d961896cdc4aaea59af62d&amp;id=8922a24c1c&amp;f_id=000cd5e3f0" 
-                      method="post" 
-                      id="mc-embedded-subscribe-form" 
-                      name="mc-embedded-subscribe-form" 
-                      class="validate" 
-                      target="_self">
+                <form action="https://dign2quality.us9.list-manage.com/subscribe/post?u=7a8d961896cdc4aaea59af62d&amp;id=8922a24c1c&amp;f_id=000cd5e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
                     <div id="mc_embed_signup_scroll">
-                        
-                        <!-- Email (Required) -->
                         <div class="mc-field-group">
                             <label for="mce-EMAIL">Email Address <span style="color: #dc2626;">*</span></label>
                             <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="your@email.com" value="">
                         </div>
-                        
-                        <!-- First Name (Required) -->
                         <div class="mc-field-group">
                             <label for="mce-FNAME">First Name <span style="color: #dc2626;">*</span></label>
                             <input type="text" name="FNAME" class="required text" id="mce-FNAME" required placeholder="John" value="">
                         </div>
-                        
-                        <!-- Last Name & Phone (Optional - Two Columns) -->
                         <div class="two-column-fields">
                             <div class="mc-field-group" style="margin-bottom: 0 !important;">
                                 <label for="mce-LNAME" class="optional-label">Last Name</label>
                                 <input type="text" name="LNAME" class="text" id="mce-LNAME" placeholder="Doe" value="">
                             </div>
-                            
                             <div class="mc-field-group" style="margin-bottom: 0 !important;">
                                 <label for="mce-PHONE" class="optional-label">Phone</label>
                                 <input type="text" name="PHONE" class="text" id="mce-PHONE" placeholder="+1 555 123 4567" value="">
                             </div>
                         </div>
-                        
-                        <!-- Company (Optional) -->
                         <div class="mc-field-group">
                             <label for="mce-COMPANY" class="optional-label">Company</label>
                             <input type="text" name="COMPANY" class="text" id="mce-COMPANY" placeholder="Your company name" value="">
                         </div>
-                        
-                        <!-- Response messages -->
                         <div id="mce-responses" class="clear foot">
                             <div class="response" id="mce-error-response" style="display: none;"></div>
                             <div class="response" id="mce-success-response" style="display: none;"></div>
                         </div>
-                        
-                        <!-- Honeypot (spam protection) -->
                         <div aria-hidden="true" style="position: absolute; left: -5000px;">
                             <input type="text" name="b_7a8d961896cdc4aaea59af62d_8922a24c1c" tabindex="-1" value="">
                         </div>
-                        
-                        <!-- Submit Button -->
                         <div class="optionalParent">
                             <div class="clear foot">
                                 <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join the Waitlist - March 1st Launch">
@@ -498,8 +393,6 @@
                     </div>
                 </form>
             </div>
-            
-            <!-- Mailchimp validation script -->
             <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
             <script type="text/javascript">
                 (function($) {
@@ -549,7 +442,7 @@
             </div>
             <div>
                 <h3 class="font-bold text-white text-lg mb-4">Connect</h3>
-                <p class="text-sm">Questions about the book?<br/>Email: <a href="/cdn-cgi/l/email-protection#6f0c070e0b2f0b0608015d1e1a0e03061b16410c0002" class="hover:text-white"><span class="__cf_email__" data-cfemail="a5c6cdc4c1e5c1ccc2cb97d4d0c4c9ccd1dc8bc6cac8">[email&#160;protected]</span></a></p>
+                <p class="text-sm">Questions about the book?<br/>Email: <a href="/cdn-cgi/l/email-protection#1d7e757c795d79747a732f6c687c71746964337e7270" class="hover:text-white"><span class="__cf_email__" data-cfemail="b9dad1d8ddf9ddd0ded78bc8ccd8d5d0cdc097dad6d4">[email&#160;protected]</span></a></p>
             </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
@@ -558,7 +451,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Countdown Timer
     function updateCountdown() {
         const launchDate = new Date('2026-03-01T00:00:00').getTime();
