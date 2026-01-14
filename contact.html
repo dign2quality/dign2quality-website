@@ -3,222 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Built to Last</title>
-    <meta name="description" content="Get in touch with Chad Diggs about Built to Last, quality management consulting, or the DIQ Platform. Questions about the book? We'd love to hear from you.">
+    <title>Contact Chad Diggs | Built to Last</title>
+    <meta name="description" content="Get in touch with Chad Diggs about Built to Last, speaking engagements, or quality consulting. Email: chad@dign2quality.com">
     <script src="https://cdn.tailwindcss.com"></script>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQH11J6K3F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WQH11J6K3F');
-</script>
-<!-- End Google Analytics -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQH11J6K3F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WQH11J6K3F');
+    </script>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #db2777 100%);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
 
 <!-- Navigation -->
-<nav class="bg-white border-b-2 border-gray-200 sticky top-0 z-50 shadow-sm">
+<nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-                <span class="font-bold text-xl text-gray-900">Built to Last</span>
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">Built to Last</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html#about" class="font-semibold text-gray-600 hover:text-gray-900">About</a>
+                <a href="index.html#waitlist" class="font-semibold text-gray-600 hover:text-gray-900">Pre-Order</a>
+                <a href="contact.html" class="font-semibold text-blue-600 hover:text-blue-700">Contact</a>
             </div>
-            
-            <div class="hidden md:flex items-center gap-6">
-                <a href="index.html" class="font-semibold text-gray-600 hover:text-gray-900">Home</a>
-                <a href="about.html" class="font-semibold text-gray-600 hover:text-gray-900">About</a>
-                <a href="chapters.html" class="font-semibold text-gray-600 hover:text-gray-900">Chapters</a>
-                <a href="tools.html" class="font-semibold text-gray-600 hover:text-gray-900">Free Tools</a>
-                <a href="contact.html" class="font-semibold text-blue-600">Contact</a>
-                <a href="index.html#waitlist" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">
-                    Pre-Order Now
-                </a>
-            </div>
-
             <button onclick="toggleMobileMenu()" class="md:hidden">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2 pb-4">
-            <a href="index.html" class="block px-4 py-2 rounded hover:bg-gray-100">Home</a>
-            <a href="about.html" class="block px-4 py-2 rounded hover:bg-gray-100">About</a>
-            <a href="chapters.html" class="block px-4 py-2 rounded hover:bg-gray-100">Chapters</a>
-            <a href="tools.html" class="block px-4 py-2 rounded hover:bg-gray-100">Free Tools</a>
-            <a href="contact.html" class="block px-4 py-2 rounded bg-gray-100">Contact</a>
-            <a href="index.html#waitlist" class="block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold text-center">Pre-Order Now</a>
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-2">
+            <a href="index.html#about" class="block px-4 py-2 rounded hover:bg-gray-100">About</a>
+            <a href="index.html#waitlist" class="block px-4 py-2 rounded hover:bg-gray-100">Pre-Order</a>
+            <a href="contact.html" class="block px-4 py-2 rounded bg-blue-50 text-blue-600">Contact</a>
         </div>
     </div>
 </nav>
 
 <!-- Hero Section -->
-<section class="hero-gradient text-white py-20">
+<section class="hero-gradient text-white py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-        <p class="text-xl text-gray-100">
-            Questions about the book, quality consulting, or the DIQ Platform? Let's talk.
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+        <p class="text-xl text-blue-100">
+            Questions about the book? Interested in speaking engagements or consulting?<br/>
+            Let's connect.
         </p>
     </div>
 </section>
 
-<!-- Contact Options -->
-<section class="py-16 bg-white">
-    <div class="max-w-5xl mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8 mb-16">
-            <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
-                <div class="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <h3 class="font-bold text-xl mb-2">Email</h3>
-                <p class="text-gray-600 text-sm mb-3">General inquiries and book questions</p>
-                <a href="/cdn-cgi/l/email-protection#91f2f9f0f5d1f5f8f6ffa3e0e4f0fdf8e5e8bff2fefc" class="text-blue-600 font-semibold hover:text-blue-800"><span class="__cf_email__" data-cfemail="0d6e656c694d69646a633f7c786c61647974236e6260">[email&#160;protected]</span></a>
-            </div>
-
-            <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
-                <div class="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <h3 class="font-bold text-xl mb-2">Consulting</h3>
-                <p class="text-gray-600 text-sm mb-3">Quality management consulting inquiries</p>
-                <a href="/cdn-cgi/l/email-protection#d9bab1b8bd99bdb0beb7eba8acb8b5b0ada0f7bab6b4e6aaacbbb3bcbaade49ab6b7aaacb5adb0b7befcebe990b7a8acb0aba0" class="text-blue-600 font-semibold hover:text-blue-800">Request Info</a>
-            </div>
-
-            <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
-                <div class="bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                    </svg>
-                </div>
-                <h3 class="font-bold text-xl mb-2">DIQ Platform</h3>
-                <p class="text-gray-600 text-sm mb-3">Enterprise software inquiries</p>
-                <a href="/cdn-cgi/l/email-protection#77141f161337131e1019450602161b1e030e5914181a480402151d1214034a333e26524547271b16031118051a5245473e1906021e050e" class="text-blue-600 font-semibold hover:text-blue-800">Learn More</a>
-            </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="max-w-2xl mx-auto">
-            <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Send a Message</h2>
-                <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                    <div class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Name *</label>
-                            <input type="text" id="name" name="name" required 
-                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition">
-                        </div>
-
-                        <div>
-                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-                            <input type="email" id="email" name="email" required 
-                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition">
-                        </div>
-
-                        <div>
-                            <label for="company" class="block text-sm font-semibold text-gray-700 mb-2">Company</label>
-                            <input type="text" id="company" name="company" 
-                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition">
-                        </div>
-
-                        <div>
-                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject *</label>
-                            <select id="subject" name="subject" required
-                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition">
-                                <option value="">Select a subject...</option>
-                                <option value="Book Question">Question about the book</option>
-                                <option value="Pre-Order">Pre-order inquiry</option>
-                                <option value="Consulting">Consulting services</option>
-                                <option value="DIQ Platform">DIQ Platform / Software</option>
-                                <option value="Speaking">Speaking engagement</option>
-                                <option value="Media">Media / Press</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
-                            <textarea id="message" name="message" rows="6" required
-                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition resize-y"></textarea>
-                        </div>
-
-                        <button type="submit" 
-                            class="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-                <p class="text-sm text-gray-500 text-center mt-4">
-                    We typically respond within 24-48 hours.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+<!-- Contact Section -->
+<section class="py-20">
     <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-        <div class="space-y-6">
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg text-gray-900 mb-2">When will the book be available?</h3>
-                <p class="text-gray-700">The book launches March 1, 2026. Pre-order now to get immediate access to all 10 free quality tools plus early access to the DIQ Platform beta.</p>
+        <div class="grid md:grid-cols-2 gap-12">
+            
+            <!-- Contact Form -->
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Send a Message</h2>
+                
+                <!-- Web3Forms Contact Form - FREE and sends to your email -->
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                    
+                    <!-- IMPORTANT: Replace with YOUR Web3Forms Access Key -->
+                    <!-- Get free key at: https://web3forms.com -->
+                    <input type="hidden" name="access_key" value="4dde0a99-3a1a-4a4e-a89d-c85c09d86004">
+                    
+                    <!-- Redirect after submission -->
+                    <input type="hidden" name="redirect" value="https://dign2quality.com/thank-you.html">
+                    
+                    <!-- Your email (where submissions go) -->
+                    <input type="hidden" name="email" value="chad@dign2quality.com">
+                    
+                    <!-- Honeypot for spam protection -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                        <input type="text" id="name" name="name" required 
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition"
+                               placeholder="John Doe">
+                    </div>
+                    
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                        <input type="email" id="email" name="from_email" required 
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition"
+                               placeholder="john@company.com">
+                    </div>
+                    
+                    <!-- Company Field -->
+                    <div>
+                        <label for="company" class="block text-sm font-semibold text-gray-700 mb-2">Company (Optional)</label>
+                        <input type="text" id="company" name="company" 
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition"
+                               placeholder="Your Company Name">
+                    </div>
+                    
+                    <!-- Subject Field -->
+                    <div>
+                        <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject *</label>
+                        <select id="subject" name="subject" required 
+                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition">
+                            <option value="">Select a topic...</option>
+                            <option value="Book Question">Question about the book</option>
+                            <option value="Speaking Engagement">Speaking engagement inquiry</option>
+                            <option value="Consulting">Quality consulting inquiry</option>
+                            <option value="Media">Media/Press inquiry</option>
+                            <option value="Partnership">Partnership opportunity</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Message Field -->
+                    <div>
+                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
+                        <textarea id="message" name="message" required rows="5"
+                                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition"
+                                  placeholder="Tell me how I can help..."></textarea>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition transform hover:scale-105">
+                        Send Message
+                    </button>
+                </form>
             </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg text-gray-900 mb-2">What formats will the book be available in?</h3>
-                <p class="text-gray-700">The book will be available in paperback, Kindle/ebook, and audiobook formats through Amazon and other major retailers.</p>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg text-gray-900 mb-2">Do you offer consulting services?</h3>
-                <p class="text-gray-700">Yes! I work with mid-market manufacturers on quality system implementation, DFMEA/PFMEA facilitation, supplier quality management, and AS9100 certification preparation. Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94f7fcf5f0d4f0fdf3faa6e5e1f5f8fde0edbaf7fbf9">[email&#160;protected]</a> for rates and availability.</p>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg text-gray-900 mb-2">When will the DIQ Platform be available?</h3>
-                <p class="text-gray-700">The DIQ Platform is scheduled to launch in Q1 2027. Everyone who pre-orders the book gets priority access to the beta program.</p>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg text-gray-900 mb-2">Are you available for speaking engagements?</h3>
-                <p class="text-gray-700">Yes! I speak at manufacturing conferences, quality associations, and company events on topics including prevention-first quality, COPQ reduction, and making quality a competitive advantage. Contact me for availability and fees.</p>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg text-gray-900 mb-2">Can I get a bulk discount for my team?</h3>
-                <p class="text-gray-700">Absolutely! We offer bulk pricing for companies purchasing 10+ copies for their quality teams. Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9af9f2fbfedafef3fdf4a8ebeffbf6f3eee3b4f9f5f7">[email&#160;protected]</a> with the quantity you need.</p>
+            
+            <!-- Contact Info -->
+            <div class="space-y-8">
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Direct Contact</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Email -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-100 p-3 rounded-lg">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Email</p>
+                                <a href="mailto:chad@dign2quality.com" class="text-blue-600 hover:text-blue-700">chad@dign2quality.com</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Response Time -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-100 p-3 rounded-lg">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Response Time</p>
+                                <p class="text-gray-600">Usually within 24-48 hours</p>
+                            </div>
+                        </div>
+                        
+                        <!-- LinkedIn -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-100 p-3 rounded-lg">
+                                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-blue-600 hover:text-blue-700">Connect with Chad</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Info -->
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">What to Expect</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Personalized responses to all inquiries</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Speaking availability discussed directly</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Consulting opportunities reviewed carefully</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">Ready to Get Started?</h2>
-        <p class="text-xl text-gray-700 mb-8">
-            Don't wait until March 1st. Pre-order now and get instant access to all quality tools.
-        </p>
-        <a href="index.html#waitlist" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition">
-            Pre-Order Now →
-        </a>
     </div>
 </section>
 
@@ -231,23 +224,23 @@
                 <p class="text-sm">Making quality the strategic advantage, not the "bad guy."</p>
             </div>
             <div>
-                <h3 class="font-bold text-white text-lg mb-4">Book</h3>
+                <h3 class="font-bold text-white text-lg mb-4">Quick Links</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="index.html" class="hover:text-white">Home</a></li>
-                    <li><a href="chapters.html" class="hover:text-white">Chapters</a></li>
-                    <li><a href="about.html" class="hover:text-white">About the Author</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold text-white text-lg mb-4">Resources</h3>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="tools.html" class="hover:text-white">Free Quality Tools</a></li>
+                    <li><a href="index.html#about" class="hover:text-white">About the Book</a></li>
+                    <li><a href="index.html#waitlist" class="hover:text-white">Pre-Order</a></li>
                     <li><a href="contact.html" class="hover:text-white">Contact</a></li>
                 </ul>
             </div>
             <div>
+                <h3 class="font-bold text-white text-lg mb-4">Legal</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
                 <h3 class="font-bold text-white text-lg mb-4">Connect</h3>
-                <p class="text-sm">Questions about the book?<br/>Email: <a href="/cdn-cgi/l/email-protection#3f5c575e5b7f5b5658510d4e4a5e53564b46115c5052" class="hover:text-white"><span class="__cf_email__" data-cfemail="1d7e757c795d79747a732f6c687c71746964337e7270">[email&#160;protected]</span></a></p>
+                <p class="text-sm">Questions about the book?<br/>Email: <a href="mailto:chad@dign2quality.com" class="hover:text-white">chad@dign2quality.com</a></p>
             </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
@@ -256,4 +249,12 @@
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/emai
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+    }
+</script>
+
+</body>
+</html>
