@@ -1,10 +1,14 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/tools/:tool",
-      "destination": "/tools/:tool.html"
+      "src": "/tools/(.*)\\.html",
+      "dest": "/tools/$1.html"
+    },
+    {
+      "src": "/tools/(.*)",
+      "dest": "/tools/$1.html"
     }
   ]
 }
