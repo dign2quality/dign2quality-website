@@ -231,20 +231,50 @@
 <!-- Gumroad Checkout -->
 <section id="purchase" class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
     <div class="max-w-4xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Get Instant Tool Access</h2>
-            <p class="text-xl text-gray-700">Pre-order now and start using professional quality tools today</p>
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Complete Your Pre-Order</h2>
+            <p class="text-xl text-gray-700 mb-2">Secure checkout • Instant access to all 10 tools</p>
+            <p class="text-lg text-blue-600 font-bold">Only $19.99 • 30-Day Money-Back Guarantee</p>
         </div>
         
-        <div class="gumroad-container">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
             <!-- Gumroad Embed -->
             <script src="https://gumroad.com/js/gumroad.js"></script>
-            <a class="gumroad-button" href="https://3764033545230.gumroad.com/l/nbxocg" target="_blank">Pre-Order on Gumroad</a>
+            <a class="gumroad-button" 
+               href="https://3764033545230.gumroad.com/l/nbxocg" 
+               data-gumroad-overlay-checkout="true"
+               style="display: block; background-color: #2563eb; color: white; padding: 20px 40px; text-align: center; border-radius: 12px; font-weight: bold; font-size: 20px; text-decoration: none; transition: all 0.3s;">
+                🚀 Pre-Order for $19.99 - Get Instant Access
+            </a>
+            
+            <div class="mt-6 grid grid-cols-3 gap-4 text-center text-sm text-gray-600">
+                <div>
+                    <div class="text-2xl mb-1">✅</div>
+                    <div class="font-semibold">Secure Checkout</div>
+                    <div class="text-xs">via Gumroad</div>
+                </div>
+                <div>
+                    <div class="text-2xl mb-1">💯</div>
+                    <div class="font-semibold">30-Day Guarantee</div>
+                    <div class="text-xs">No questions asked</div>
+                </div>
+                <div>
+                    <div class="text-2xl mb-1">🔒</div>
+                    <div class="font-semibold">Instant Delivery</div>
+                    <div class="text-xs">Tools in 60 seconds</div>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                <p class="text-sm text-gray-700 text-center">
+                    <strong>What happens next:</strong> Click the button above → Complete payment → Get instant email with tool download link → Book delivers March 1
+                </p>
+            </div>
         </div>
         
         <div class="mt-8 text-center">
             <p class="text-sm text-gray-600">
-                ✅ Secure checkout via Gumroad &nbsp;•&nbsp; 💯 30-day money-back guarantee &nbsp;•&nbsp; 🔒 Instant digital delivery
+                Questions? Email <a href="mailto:chad@dign2quality.com" class="text-blue-600 hover:underline">chad@dign2quality.com</a>
             </p>
         </div>
     </div>
@@ -363,7 +393,7 @@
                         <ul class="space-y-1 text-sm text-gray-700">
                             <li>• Priority access to DIQ software beta (2027)</li>
                             <li>• Monthly office hours with author (starts March 2026)</li>
-                            <li>• Email support at chad@dign2quality.com</li>
+                            <li>• Email support at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a09020b0e2a0e030d04581b1f0b06031e1344090507">[email&#160;protected]</a></li>
                         </ul>
                     </div>
                 </div>
@@ -554,15 +584,53 @@
         menu.classList.toggle('hidden');
     }
 
-    // Countdown Timer
-    function updateCountdown() {
-        const launchDate = new Date('2026-03-01T00:00:00').getTime();
-        const now = new Date().getTime();
-        const distance = launchDate - now;
+    // Smooth scroll for anchor links
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        // Countdown Timer
+        function updateCountdown() {
+            const launchDate = new Date('2026-03-01T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
 
-        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-        document.getElementById('hours').textContent = hours.to
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+
+            if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                const countdownEl = document.getElementById('countdown');
+                if (countdownEl) countdownEl.innerHTML = '<p class="text-2xl font-bold">NOW AVAILABLE!</p>';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000); // Update every minute
+    });
+</script>
+
+</body>
+</html>
+ 
