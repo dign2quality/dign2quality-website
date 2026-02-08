@@ -105,14 +105,14 @@
                 After 20 years in manufacturing quality, I got tired of watching the same preventable failures destroy companies. This book is the blueprint I wish I'd had on day one—proven frameworks, real tools, no consultant BS.
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center pt-4">
-                <button onclick="scrollToWaitlist()" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition">
-                    Pre-Order Now - March 1st Launch →
-                </button>
-                <a href="tools.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition">
-                    Get Free Quality Tools
+                <a href="purchase.html" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition text-center">
+                    Pre-Order Now - Get Tools Instantly →
+                </a>
+                <a href="tools.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition text-center">
+                    See What's Included
                 </a>
             </div>
-            <p class="text-yellow-200 font-semibold">📚 Publishing March 1, 2026 • Join 500+ on the Waitlist</p>
+            <p class="text-yellow-200 font-semibold">📚 Launching March 1, 2026 • Get Instant Tool Access Today</p>
         </div>
     </div>
 </section>
@@ -297,16 +297,23 @@
 <section id="waitlist" class="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
     <div class="max-w-4xl mx-auto px-4">
         <div class="text-center space-y-6 mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold">Reserve Your Copy Today</h2>
+            <h2 class="text-4xl md:text-5xl font-bold">Pre-Order Now - Get Tools Instantly</h2>
             <p class="text-xl text-blue-100">
-                Join 500+ quality professionals who are done fighting fires and ready to start preventing them.
+                Book launches March 1, 2026. Pre-order today and download all 10 professional quality tools immediately.
             </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center pt-4">
+                <a href="purchase.html" class="bg-white text-blue-600 px-10 py-5 rounded-lg font-bold text-xl hover:bg-gray-100 transition transform hover:scale-105 text-center">
+                    Pre-Order for $19.99 →
+                </a>
+            </div>
+            <p class="text-sm text-blue-200">Also available: <a href="purchase.html" class="underline hover:text-white">Kindle $9.99</a> • <a href="purchase.html" class="underline hover:text-white">Print $29.99</a></p>
+            <p class="text-sm text-blue-100 mt-6">Or join the waitlist below for launch updates:</p>
         </div>
 
         <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-2xl mx-auto">
             <div class="space-y-6 mb-8">
-                <h3 class="text-2xl font-bold text-gray-900 text-center">Pre-Order "Built to Last"</h3>
-                <p class="text-gray-600 text-center">Get instant access to exclusive bonuses when you pre-order:</p>
+                <h3 class="text-2xl font-bold text-gray-900 text-center">Join the Waitlist</h3>
+                <p class="text-gray-600 text-center">Get launch updates and notifications (or <a href="purchase.html" class="text-blue-600 hover:underline font-semibold">pre-order now</a> for instant tool access):</p>
                 
                 <div class="space-y-3">
                     <div class="flex items-start gap-3">
@@ -443,7 +450,7 @@
             </div>
             <div>
                 <h3 class="font-bold text-white text-lg mb-4">Connect</h3>
-                <p class="text-sm">Questions about the book?<br/>Email: <a href="mailto:chad@dign2quality.com" class="hover:text-white">chad@dign2quality.com</a></p>
+                <p class="text-sm">Questions about the book?<br/>Email: <a href="/cdn-cgi/l/email-protection#e7848f8683a7838e8089d59692868b8e939ec984888a" class="hover:text-white"><span class="__cf_email__" data-cfemail="56353e373216323f3138642723373a3f222f7835393b">[email&#160;protected]</span></a></p>
             </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
@@ -453,27 +460,36 @@
 </footer>
 
 <script>
-    // Countdown Timer
-    function updateCountdown() {
-        const launchDate = new Date('2026-03-01T00:00:00').getTime();
-        const now = new Date().getTime();
-        const distance = launchDate - now;
+    // Countdown Timer - runs when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        function updateCountdown() {
+            const launchDate = new Date('2026-03-01T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            
+            if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
 
-        if (distance < 0) {
-            document.getElementById('countdown').innerHTML = '<p class="text-2xl font-bold">NOW AVAILABLE!</p>';
+            if (distance < 0) {
+                const countdownEl = document.getElementById('countdown');
+                if (countdownEl) {
+                    countdownEl.innerHTML = '<p class="text-2xl font-bold">NOW AVAILABLE!</p>';
+                }
+            }
         }
-    }
 
-    updateCountdown();
-    setInterval(updateCountdown, 60000); // Update every minute
+        updateCountdown();
+        setInterval(updateCountdown, 60000); // Update every minute
+    });
 
     function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
@@ -502,6 +518,3 @@
         }
     });
 </script>
-
-</body>
-</html>
