@@ -104,7 +104,7 @@
             <!-- Book Cover -->
             <div class="flex justify-center lg:justify-end">
                 <div class="relative">
-                    <img src="Below_The_Surface_3D_-_B__1_.png" alt="Below the Surface: Building Quality Systems Not Heroes by Chad Diggs" class="w-full max-w-md h-auto shadow-2xl rounded-lg transform hover:scale-105 transition duration-300">
+                    <img src="book-cover.png" alt="Below the Surface: Building Quality Systems Not Heroes by Chad Diggs" class="w-full max-w-md h-auto shadow-2xl rounded-lg transform hover:scale-105 transition duration-300">
                     <div class="absolute -inset-4 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 blur-xl rounded-lg"></div>
                 </div>
             </div>
@@ -468,14 +468,18 @@
     function scrollToWaitlist() {
         const diqSection = document.getElementById('diq-software');
         if (diqSection) {
-            diqSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            diqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             setTimeout(function() {
                 const emailInput = document.getElementById('mce-EMAIL');
                 if (emailInput) {
                     emailInput.focus();
                 }
-            }, 800);
+            }, 1000);
         }
+    }
+
+    function scrollToDIQ() {
+        scrollToWaitlist(); // Use same function
     }
 
     // Close mobile menu when clicking outside
